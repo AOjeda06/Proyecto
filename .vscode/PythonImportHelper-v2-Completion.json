@@ -1,0 +1,89 @@
+[
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "api_users.users",
+        "description": "api_users.users",
+        "peekOfCode": "class User(BaseModel):\n    id: int\n    name: str\n    surname: str\n    age: int\nUserList = [\n    User(id=1, name=\"John\", surname=\"Doe\", age=30),\n    User(id=2, name=\"Jane\", surname=\"Smith\", age=25),\n    User(id=3, name=\"Alice\", surname=\"Johnson\", age=28)\n]",
+        "detail": "api_users.users",
+        "documentation": {}
+    },
+    {
+        "label": "users",
+        "kind": 2,
+        "importPath": "api_users.users",
+        "description": "api_users.users",
+        "peekOfCode": "def users():\n    return UserList\n@app.get(\"/users/{id}\")\ndef user(id: int):\n    users = [user for user in UserList if user.id == id]\n    if users:\n        return users[0]\n    return {\"error\": \"User not found\"}",
+        "detail": "api_users.users",
+        "documentation": {}
+    },
+    {
+        "label": "user",
+        "kind": 2,
+        "importPath": "api_users.users",
+        "description": "api_users.users",
+        "peekOfCode": "def user(id: int):\n    users = [user for user in UserList if user.id == id]\n    if users:\n        return users[0]\n    return {\"error\": \"User not found\"}",
+        "detail": "api_users.users",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "api_users.users",
+        "description": "api_users.users",
+        "peekOfCode": "app = FastAPI()\nclass User(BaseModel):\n    id: int\n    name: str\n    surname: str\n    age: int\nUserList = [\n    User(id=1, name=\"John\", surname=\"Doe\", age=30),\n    User(id=2, name=\"Jane\", surname=\"Smith\", age=25),\n    User(id=3, name=\"Alice\", surname=\"Johnson\", age=28)",
+        "detail": "api_users.users",
+        "documentation": {}
+    },
+    {
+        "label": "UserList",
+        "kind": 5,
+        "importPath": "api_users.users",
+        "description": "api_users.users",
+        "peekOfCode": "UserList = [\n    User(id=1, name=\"John\", surname=\"Doe\", age=30),\n    User(id=2, name=\"Jane\", surname=\"Smith\", age=25),\n    User(id=3, name=\"Alice\", surname=\"Johnson\", age=28)\n]\n@app.get(\"/users\")\ndef users():\n    return UserList\n@app.get(\"/users/{id}\")\ndef user(id: int):",
+        "detail": "api_users.users",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 2,
+        "importPath": "Ej.main",
+        "description": "Ej.main",
+        "peekOfCode": "def root():\n    return {\"Hello, World!\"}",
+        "detail": "Ej.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "Ej.main",
+        "description": "Ej.main",
+        "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\ndef root():\n    return {\"Hello, World!\"}",
+        "detail": "Ej.main",
+        "documentation": {}
+    }
+]
