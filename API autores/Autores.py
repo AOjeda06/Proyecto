@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -28,4 +28,4 @@ def get_autor(id: int):
     autores = [autor for autor in AutorList if autor.id == id]
     if autores:
         return autores[0]
-    return {"error": "Autor no encontrado"}
+    raise HTTPException(status_code=404, detail="Autor no encontrado")

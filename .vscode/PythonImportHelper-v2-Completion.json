@@ -8,6 +8,14 @@
         "documentation": {}
     },
     {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "BaseModel",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -29,7 +37,7 @@
         "kind": 2,
         "importPath": "API autores.Autores",
         "description": "API autores.Autores",
-        "peekOfCode": "def get_autores():\n    return AutorList\n# Endpoint para obtener un autor por su ID\n@app.get(\"/autores/{id}\")\ndef get_autor(id: int):\n    autores = [autor for autor in AutorList if autor.id == id]\n    if autores:\n        return autores[0]\n    return {\"error\": \"Autor no encontrado\"}",
+        "peekOfCode": "def get_autores():\n    return AutorList\n# Endpoint para obtener un autor por su ID\n@app.get(\"/autores/{id}\")\ndef get_autor(id: int):\n    autores = [autor for autor in AutorList if autor.id == id]\n    if autores:\n        return autores[0]\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")",
         "detail": "API autores.Autores",
         "documentation": {}
     },
@@ -38,7 +46,7 @@
         "kind": 2,
         "importPath": "API autores.Autores",
         "description": "API autores.Autores",
-        "peekOfCode": "def get_autor(id: int):\n    autores = [autor for autor in AutorList if autor.id == id]\n    if autores:\n        return autores[0]\n    return {\"error\": \"Autor no encontrado\"}",
+        "peekOfCode": "def get_autor(id: int):\n    autores = [autor for autor in AutorList if autor.id == id]\n    if autores:\n        return autores[0]\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")",
         "detail": "API autores.Autores",
         "documentation": {}
     },
