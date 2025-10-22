@@ -16,6 +16,30 @@
         "documentation": {}
     },
     {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
         "label": "BaseModel",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -37,7 +61,7 @@
         "kind": 2,
         "importPath": "API autores.Autores",
         "description": "API autores.Autores",
-        "peekOfCode": "def get_autores():\n    return AutorList\n# Endpoint para obtener un autor por su ID\n@app.get(\"/autores/{id}\")\ndef get_autor(id: int):\n    autores = [autor for autor in AutorList if autor.id == id]\n    if autores:\n        return autores[0]\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")",
+        "peekOfCode": "def get_autores():\n    return get_all_autores()\n# Endpoint para obtener un autor por su ID\n@app.get(\"/autores/{id}\")\ndef get_autor(id: int):\n    autor = find_autor_by_id(id)\n    if autor:\n        return autor\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n# Endpoint para crear un nuevo autor",
         "detail": "API autores.Autores",
         "documentation": {}
     },
@@ -46,7 +70,88 @@
         "kind": 2,
         "importPath": "API autores.Autores",
         "description": "API autores.Autores",
-        "peekOfCode": "def get_autor(id: int):\n    autores = [autor for autor in AutorList if autor.id == id]\n    if autores:\n        return autores[0]\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")",
+        "peekOfCode": "def get_autor(id: int):\n    autor = find_autor_by_id(id)\n    if autor:\n        return autor\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n# Endpoint para crear un nuevo autor\n@app.post(\"/autores\", status_code=201, response_model=Autor)\ndef create_autor(autor: Autor):\n    autor.id = next_id()\n    add_autor(autor)",
+        "detail": "API autores.Autores",
+        "documentation": {}
+    },
+    {
+        "label": "create_autor",
+        "kind": 2,
+        "importPath": "API autores.Autores",
+        "description": "API autores.Autores",
+        "peekOfCode": "def create_autor(autor: Autor):\n    autor.id = next_id()\n    add_autor(autor)\n    return autor\n# Endpoint para modificar un autor existente\n@app.put(\"/autores/{id}\", response_model=Autor)\ndef modify_autor(id: int, autor: Autor): \n    updated = update_autor(id, autor)\n    if updated:\n        return updated",
+        "detail": "API autores.Autores",
+        "documentation": {}
+    },
+    {
+        "label": "modify_autor",
+        "kind": 2,
+        "importPath": "API autores.Autores",
+        "description": "API autores.Autores",
+        "peekOfCode": "def modify_autor(id: int, autor: Autor): \n    updated = update_autor(id, autor)\n    if updated:\n        return updated\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n# Endpoint para eliminar un autor por su ID\n@app.delete(\"/autores/{id}\", status_code=204)\ndef delete_autor(id: int):\n    removed = remove_autor(id)\n    if removed:",
+        "detail": "API autores.Autores",
+        "documentation": {}
+    },
+    {
+        "label": "delete_autor",
+        "kind": 2,
+        "importPath": "API autores.Autores",
+        "description": "API autores.Autores",
+        "peekOfCode": "def delete_autor(id: int):\n    removed = remove_autor(id)\n    if removed:\n        return {}\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n#region Funciones \n# Función para generar el siguiente ID disponible\ndef next_id():\n    if AutorList:\n        return (max(autor.id for autor in AutorList) + 1)",
+        "detail": "API autores.Autores",
+        "documentation": {}
+    },
+    {
+        "label": "next_id",
+        "kind": 2,
+        "importPath": "API autores.Autores",
+        "description": "API autores.Autores",
+        "peekOfCode": "def next_id():\n    if AutorList:\n        return (max(autor.id for autor in AutorList) + 1)\n    return 1\n# Funciones extraídas para operaciones sobre AutorList\ndef get_all_autores():\n    return AutorList\ndef find_autor_by_id(id: int):\n    autores = [autor for autor in AutorList if autor.id == id]\n    return autores[0] if autores else None",
+        "detail": "API autores.Autores",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_autores",
+        "kind": 2,
+        "importPath": "API autores.Autores",
+        "description": "API autores.Autores",
+        "peekOfCode": "def get_all_autores():\n    return AutorList\ndef find_autor_by_id(id: int):\n    autores = [autor for autor in AutorList if autor.id == id]\n    return autores[0] if autores else None\ndef add_autor(autor: Autor):\n    AutorList.append(autor)\ndef update_autor(id: int, autor: Autor):\n    for index, saved_autor in enumerate(AutorList):\n        if saved_autor.id == id:",
+        "detail": "API autores.Autores",
+        "documentation": {}
+    },
+    {
+        "label": "find_autor_by_id",
+        "kind": 2,
+        "importPath": "API autores.Autores",
+        "description": "API autores.Autores",
+        "peekOfCode": "def find_autor_by_id(id: int):\n    autores = [autor for autor in AutorList if autor.id == id]\n    return autores[0] if autores else None\ndef add_autor(autor: Autor):\n    AutorList.append(autor)\ndef update_autor(id: int, autor: Autor):\n    for index, saved_autor in enumerate(AutorList):\n        if saved_autor.id == id:\n            autor.id = id\n            AutorList[index] = autor",
+        "detail": "API autores.Autores",
+        "documentation": {}
+    },
+    {
+        "label": "add_autor",
+        "kind": 2,
+        "importPath": "API autores.Autores",
+        "description": "API autores.Autores",
+        "peekOfCode": "def add_autor(autor: Autor):\n    AutorList.append(autor)\ndef update_autor(id: int, autor: Autor):\n    for index, saved_autor in enumerate(AutorList):\n        if saved_autor.id == id:\n            autor.id = id\n            AutorList[index] = autor\n            return autor\n    return None\ndef remove_autor(id: int):",
+        "detail": "API autores.Autores",
+        "documentation": {}
+    },
+    {
+        "label": "update_autor",
+        "kind": 2,
+        "importPath": "API autores.Autores",
+        "description": "API autores.Autores",
+        "peekOfCode": "def update_autor(id: int, autor: Autor):\n    for index, saved_autor in enumerate(AutorList):\n        if saved_autor.id == id:\n            autor.id = id\n            AutorList[index] = autor\n            return autor\n    return None\ndef remove_autor(id: int):\n    for index, saved_autor in enumerate(AutorList):\n        if saved_autor.id == id:",
+        "detail": "API autores.Autores",
+        "documentation": {}
+    },
+    {
+        "label": "remove_autor",
+        "kind": 2,
+        "importPath": "API autores.Autores",
+        "description": "API autores.Autores",
+        "peekOfCode": "def remove_autor(id: int):\n    for index, saved_autor in enumerate(AutorList):\n        if saved_autor.id == id:\n            AutorList.remove(saved_autor)\n            return True\n    return False\n#endregion",
         "detail": "API autores.Autores",
         "documentation": {}
     },
@@ -64,8 +169,134 @@
         "kind": 5,
         "importPath": "API autores.Autores",
         "description": "API autores.Autores",
-        "peekOfCode": "AutorList = [\n    Autor(id=1, dni=\"12345678A\", nombre=\"Miguel\", apellidos=\"de Cervantes\"),\n    Autor(id=2, dni=\"87654321B\", nombre=\"Federico\", apellidos=\"García Lorca\"),\n    Autor(id=3, dni=\"11223344C\", nombre=\"Rosalía\", apellidos=\"de Castro\")\n]\n# Endpoint para obtener todos los autores\n@app.get(\"/autores\")\ndef get_autores():\n    return AutorList\n# Endpoint para obtener un autor por su ID",
+        "peekOfCode": "AutorList = [\n    Autor(id=1, dni=\"12345678A\", nombre=\"Miguel\", apellidos=\"de Cervantes\"),\n    Autor(id=2, dni=\"87654321B\", nombre=\"Federico\", apellidos=\"García Lorca\"),\n    Autor(id=3, dni=\"11223344C\", nombre=\"Rosalía\", apellidos=\"de Castro\")\n]\n# Endpoint para obtener todos los autores\n@app.get(\"/autores\")\ndef get_autores():\n    return get_all_autores()\n# Endpoint para obtener un autor por su ID",
         "detail": "API autores.Autores",
+        "documentation": {}
+    },
+    {
+        "label": "Libro",
+        "kind": 6,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "class Libro(BaseModel):\n    id: int\n    titulo: str\n    idAutor: int\n    isbn: str\n    numPaginas: int\n# Lista simulada de libros\nLibroList = [\n    Libro(id=1, titulo=\"Don Quijote de la Mancha\", idAutor=1, isbn=\"978-3-16-148410-0\", numPaginas=863),\n    Libro(id=2, titulo=\"La casa de Bernarda Alba\", idAutor=2, isbn=\"978-1-23-456789-0\", numPaginas=112),",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "get_libros",
+        "kind": 2,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "def get_libros():\n    return get_all_libros()\n# Endpoint para obtener un libro por su ID\n@app.get(\"/libros/{id}\")\ndef get_libro(id: int):\n    libro = find_libro_by_id(id)\n    if libro:\n        return libro\n    raise HTTPException(status_code=404, detail=\"Libro no encontrado\")\n# Endpoint para crear un nuevo libro",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "get_libro",
+        "kind": 2,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "def get_libro(id: int):\n    libro = find_libro_by_id(id)\n    if libro:\n        return libro\n    raise HTTPException(status_code=404, detail=\"Libro no encontrado\")\n# Endpoint para crear un nuevo libro\n@app.post(\"/libros\", status_code=201, response_model=Libro)\ndef create_libro(libro: Libro):\n    libro.id = next_id()\n    add_libro(libro)",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "create_libro",
+        "kind": 2,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "def create_libro(libro: Libro):\n    libro.id = next_id()\n    add_libro(libro)\n    return libro\n# Endpoint para modificar un libro existente\n@app.put(\"/libros/{id}\", response_model=Libro)\ndef modify_libro(id: int, libro: Libro): \n    updated = update_libro(id, libro)\n    if updated:\n        return updated",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "modify_libro",
+        "kind": 2,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "def modify_libro(id: int, libro: Libro): \n    updated = update_libro(id, libro)\n    if updated:\n        return updated\n    raise HTTPException(status_code=404, detail=\"Libro no encontrado\")\n# Endpoint para eliminar un libro por su ID\n@app.delete(\"/libros/{id}\", status_code=204)\ndef delete_libro(id: int):\n    removed = remove_libro(id)\n    if removed:",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "delete_libro",
+        "kind": 2,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "def delete_libro(id: int):\n    removed = remove_libro(id)\n    if removed:\n        return {}\n    raise HTTPException(status_code=404, detail=\"Libro no encontrado\")\n#region Funciones\n#Función para generar el siguiente ID disponible\ndef next_id():\n    if LibroList:\n        return (max(libro.id for libro in LibroList) + 1)",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "next_id",
+        "kind": 2,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "def next_id():\n    if LibroList:\n        return (max(libro.id for libro in LibroList) + 1)\n    return 1\n#Funcion para obtener todos los libros\ndef get_all_libros():\n    return LibroList\n#Función para buscar un libro por su ID\n#Función para buscar un libro por su ID\ndef find_libro_by_id(id: int):",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_libros",
+        "kind": 2,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "def get_all_libros():\n    return LibroList\n#Función para buscar un libro por su ID\n#Función para buscar un libro por su ID\ndef find_libro_by_id(id: int):\n    resultados = [libro for libro in LibroList if libro.id == id]\n    return resultados[0] if resultados else None\n#Función para añadir un nuevo libro\ndef add_libro(libro: Libro):\n    LibroList.append(libro)",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "find_libro_by_id",
+        "kind": 2,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "def find_libro_by_id(id: int):\n    resultados = [libro for libro in LibroList if libro.id == id]\n    return resultados[0] if resultados else None\n#Función para añadir un nuevo libro\ndef add_libro(libro: Libro):\n    LibroList.append(libro)\n#Función para actualizar un libro existente\ndef update_libro(id: int, libro: Libro):\n    for index, saved_libro in enumerate(LibroList):\n        if saved_libro.id == id:",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "add_libro",
+        "kind": 2,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "def add_libro(libro: Libro):\n    LibroList.append(libro)\n#Función para actualizar un libro existente\ndef update_libro(id: int, libro: Libro):\n    for index, saved_libro in enumerate(LibroList):\n        if saved_libro.id == id:\n            libro.id = id\n            LibroList[index] = libro\n            return libro\n    return None",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "update_libro",
+        "kind": 2,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "def update_libro(id: int, libro: Libro):\n    for index, saved_libro in enumerate(LibroList):\n        if saved_libro.id == id:\n            libro.id = id\n            LibroList[index] = libro\n            return libro\n    return None\n#Función para eliminar un libro por su ID\ndef remove_libro(id: int):\n    for saved_libro in LibroList:",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "remove_libro",
+        "kind": 2,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "def remove_libro(id: int):\n    for saved_libro in LibroList:\n        if saved_libro.id == id:\n             LibroList.remove(saved_libro)\n             return True\n    return False\n#endregion",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "app = FastAPI()\n# Modelo de datos para un libro\nclass Libro(BaseModel):\n    id: int\n    titulo: str\n    idAutor: int\n    isbn: str\n    numPaginas: int\n# Lista simulada de libros\nLibroList = [",
+        "detail": "API libros.Libros",
+        "documentation": {}
+    },
+    {
+        "label": "LibroList",
+        "kind": 5,
+        "importPath": "API libros.Libros",
+        "description": "API libros.Libros",
+        "peekOfCode": "LibroList = [\n    Libro(id=1, titulo=\"Don Quijote de la Mancha\", idAutor=1, isbn=\"978-3-16-148410-0\", numPaginas=863),\n    Libro(id=2, titulo=\"La casa de Bernarda Alba\", idAutor=2, isbn=\"978-1-23-456789-0\", numPaginas=112),\n    Libro(id=3, titulo=\"Cantares Gallegos\", idAutor=3, isbn=\"978-0-12-345678-9\", numPaginas=78)\n]\n# Endpoint para obtener todos los libros\n@app.get(\"/libros\")\ndef get_libros():\n    return get_all_libros()\n# Endpoint para obtener un libro por su ID",
+        "detail": "API libros.Libros",
         "documentation": {}
     }
 ]
