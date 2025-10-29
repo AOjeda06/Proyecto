@@ -1,7 +1,7 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, APIRouter
 from pydantic import BaseModel
 
-app = FastAPI()
+router = APIRouter(prefix="/libros", tags=["libros"])
 
 # Modelo de datos para un libro
 class Libro(BaseModel):
@@ -18,13 +18,15 @@ LibroList = [
     Libro(id=3, titulo="Cantares Gallegos", idAutor=3, isbn="978-0-12-345678-9", numPaginas=78)
 ]
 
+#region Endpoints
+
 # Endpoint para obtener todos los libros
-@app.get("/libros")
+@router.get("/")
 def get_libros():
     return get_all_libros()
 
 # Endpoint para obtener un libro por su ID
-@app.get("/libros/{id}")
+@router.get("/{id}")
 def get_libro(id: int):
     libro = find_libro_by_id(id)
     if libro:
@@ -32,14 +34,14 @@ def get_libro(id: int):
     raise HTTPException(status_code=404, detail="Libro no encontrado")
 
 # Endpoint para crear un nuevo libro
-@app.post("/libros", status_code=201, response_model=Libro)
+@router.post("/", status_code=201, response_model=Libro)
 def create_libro(libro: Libro):
     libro.id = next_id()
     add_libro(libro)
     return libro
 
 # Endpoint para modificar un libro existente
-@app.put("/libros/{id}", response_model=Libro)
+@router.put("/{id}", response_model=Libro)
 def modify_libro(id: int, libro: Libro): 
     updated = update_libro(id, libro)
     if updated:
@@ -47,12 +49,14 @@ def modify_libro(id: int, libro: Libro):
     raise HTTPException(status_code=404, detail="Libro no encontrado")
 
 # Endpoint para eliminar un libro por su ID
-@app.delete("/libros/{id}", status_code=204)
+@router.delete("/{id}", status_code=204)
 def delete_libro(id: int):
     removed = remove_libro(id)
     if removed:
         return {}
     raise HTTPException(status_code=404, detail="Libro no encontrado")
+
+#endregion
 
 #region Funciones
 
@@ -66,7 +70,6 @@ def next_id():
 def get_all_libros():
     return LibroList
 
-#Función para buscar un libro por su ID
 #Función para buscar un libro por su ID
 def find_libro_by_id(id: int):
     resultados = [libro for libro in LibroList if libro.id == id]

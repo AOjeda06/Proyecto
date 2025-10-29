@@ -16,6 +16,14 @@
         "documentation": {}
     },
     {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -32,6 +40,78 @@
         "documentation": {}
     },
     {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "BaseModel",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -45,258 +125,610 @@
         "description": "pydantic",
         "isExtraImport": true,
         "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "StaticFiles",
+        "importPath": "fastapi.staticfiles",
+        "description": "fastapi.staticfiles",
+        "isExtraImport": true,
+        "detail": "fastapi.staticfiles",
+        "documentation": {}
+    },
+    {
+        "label": "StaticFiles",
+        "importPath": "fastapi.staticfiles",
+        "description": "fastapi.staticfiles",
+        "isExtraImport": true,
+        "detail": "fastapi.staticfiles",
+        "documentation": {}
+    },
+    {
+        "label": "libros",
+        "importPath": "routers",
+        "description": "routers",
+        "isExtraImport": true,
+        "detail": "routers",
+        "documentation": {}
+    },
+    {
+        "label": "autores",
+        "importPath": "routers",
+        "description": "routers",
+        "isExtraImport": true,
+        "detail": "routers",
+        "documentation": {}
+    },
+    {
+        "label": "directores",
+        "importPath": "routers",
+        "description": "routers",
+        "isExtraImport": true,
+        "detail": "routers",
+        "documentation": {}
+    },
+    {
+        "label": "peliculas",
+        "importPath": "routers",
+        "description": "routers",
+        "isExtraImport": true,
+        "detail": "routers",
         "documentation": {}
     },
     {
         "label": "Autor",
         "kind": 6,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
         "peekOfCode": "class Autor(BaseModel):\n    id: int\n    dni: str\n    nombre: str\n    apellidos: str\n# Lista simulada de autores\nAutorList = [\n    Autor(id=1, dni=\"12345678A\", nombre=\"Miguel\", apellidos=\"de Cervantes\"),\n    Autor(id=2, dni=\"87654321B\", nombre=\"Federico\", apellidos=\"García Lorca\"),\n    Autor(id=3, dni=\"11223344C\", nombre=\"Rosalía\", apellidos=\"de Castro\")",
-        "detail": "API autores.Autores",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "get_autores",
         "kind": 2,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
-        "peekOfCode": "def get_autores():\n    return get_all_autores()\n# Endpoint para obtener un autor por su ID\n@app.get(\"/autores/{id}\")\ndef get_autor(id: int):\n    autor = find_autor_by_id(id)\n    if autor:\n        return autor\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n# Endpoint para crear un nuevo autor",
-        "detail": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
+        "peekOfCode": "def get_autores():\n    return get_all_autores()\n# Endpoint para obtener un autor por su ID\n@router.get(\"/{id}\")\ndef get_autor(id: int):\n    autor = find_autor_by_id(id)\n    if autor:\n        return autor\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n# Endpoint para crear un nuevo autor",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "get_autor",
         "kind": 2,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
-        "peekOfCode": "def get_autor(id: int):\n    autor = find_autor_by_id(id)\n    if autor:\n        return autor\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n# Endpoint para crear un nuevo autor\n@app.post(\"/autores\", status_code=201, response_model=Autor)\ndef create_autor(autor: Autor):\n    autor.id = next_id()\n    add_autor(autor)",
-        "detail": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
+        "peekOfCode": "def get_autor(id: int):\n    autor = find_autor_by_id(id)\n    if autor:\n        return autor\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n# Endpoint para crear un nuevo autor\n@router.post(\"/\", status_code=201, response_model=Autor)\ndef create_autor(autor: Autor):\n    autor.id = next_id()\n    add_autor(autor)",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "create_autor",
         "kind": 2,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
-        "peekOfCode": "def create_autor(autor: Autor):\n    autor.id = next_id()\n    add_autor(autor)\n    return autor\n# Endpoint para modificar un autor existente\n@app.put(\"/autores/{id}\", response_model=Autor)\ndef modify_autor(id: int, autor: Autor): \n    updated = update_autor(id, autor)\n    if updated:\n        return updated",
-        "detail": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
+        "peekOfCode": "def create_autor(autor: Autor):\n    autor.id = next_id()\n    add_autor(autor)\n    return autor\n# Endpoint para modificar un autor existente\n@router.put(\"/{id}\", response_model=Autor)\ndef modify_autor(id: int, autor: Autor): \n    updated = update_autor(id, autor)\n    if updated:\n        return updated",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "modify_autor",
         "kind": 2,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
-        "peekOfCode": "def modify_autor(id: int, autor: Autor): \n    updated = update_autor(id, autor)\n    if updated:\n        return updated\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n# Endpoint para eliminar un autor por su ID\n@app.delete(\"/autores/{id}\", status_code=204)\ndef delete_autor(id: int):\n    removed = remove_autor(id)\n    if removed:",
-        "detail": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
+        "peekOfCode": "def modify_autor(id: int, autor: Autor): \n    updated = update_autor(id, autor)\n    if updated:\n        return updated\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n# Endpoint para eliminar un autor por su ID\n@router.delete(\"/{id}\", status_code=204)\ndef delete_autor(id: int):\n    removed = remove_autor(id)\n    if removed:",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "delete_autor",
         "kind": 2,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
         "peekOfCode": "def delete_autor(id: int):\n    removed = remove_autor(id)\n    if removed:\n        return {}\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n#region Funciones \n# Función para generar el siguiente ID disponible\ndef next_id():\n    if AutorList:\n        return (max(autor.id for autor in AutorList) + 1)",
-        "detail": "API autores.Autores",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "next_id",
         "kind": 2,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
         "peekOfCode": "def next_id():\n    if AutorList:\n        return (max(autor.id for autor in AutorList) + 1)\n    return 1\n# Funciones extraídas para operaciones sobre AutorList\ndef get_all_autores():\n    return AutorList\ndef find_autor_by_id(id: int):\n    autores = [autor for autor in AutorList if autor.id == id]\n    return autores[0] if autores else None",
-        "detail": "API autores.Autores",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "get_all_autores",
         "kind": 2,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
         "peekOfCode": "def get_all_autores():\n    return AutorList\ndef find_autor_by_id(id: int):\n    autores = [autor for autor in AutorList if autor.id == id]\n    return autores[0] if autores else None\ndef add_autor(autor: Autor):\n    AutorList.append(autor)\ndef update_autor(id: int, autor: Autor):\n    for index, saved_autor in enumerate(AutorList):\n        if saved_autor.id == id:",
-        "detail": "API autores.Autores",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "find_autor_by_id",
         "kind": 2,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
         "peekOfCode": "def find_autor_by_id(id: int):\n    autores = [autor for autor in AutorList if autor.id == id]\n    return autores[0] if autores else None\ndef add_autor(autor: Autor):\n    AutorList.append(autor)\ndef update_autor(id: int, autor: Autor):\n    for index, saved_autor in enumerate(AutorList):\n        if saved_autor.id == id:\n            autor.id = id\n            AutorList[index] = autor",
-        "detail": "API autores.Autores",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "add_autor",
         "kind": 2,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
         "peekOfCode": "def add_autor(autor: Autor):\n    AutorList.append(autor)\ndef update_autor(id: int, autor: Autor):\n    for index, saved_autor in enumerate(AutorList):\n        if saved_autor.id == id:\n            autor.id = id\n            AutorList[index] = autor\n            return autor\n    return None\ndef remove_autor(id: int):",
-        "detail": "API autores.Autores",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "update_autor",
         "kind": 2,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
         "peekOfCode": "def update_autor(id: int, autor: Autor):\n    for index, saved_autor in enumerate(AutorList):\n        if saved_autor.id == id:\n            autor.id = id\n            AutorList[index] = autor\n            return autor\n    return None\ndef remove_autor(id: int):\n    for index, saved_autor in enumerate(AutorList):\n        if saved_autor.id == id:",
-        "detail": "API autores.Autores",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "remove_autor",
         "kind": 2,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
         "peekOfCode": "def remove_autor(id: int):\n    for index, saved_autor in enumerate(AutorList):\n        if saved_autor.id == id:\n            AutorList.remove(saved_autor)\n            return True\n    return False\n#endregion",
-        "detail": "API autores.Autores",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
-        "label": "app",
+        "label": "router",
         "kind": 5,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
-        "peekOfCode": "app = FastAPI()\n# Modelo de datos para un autor\nclass Autor(BaseModel):\n    id: int\n    dni: str\n    nombre: str\n    apellidos: str\n# Lista simulada de autores\nAutorList = [\n    Autor(id=1, dni=\"12345678A\", nombre=\"Miguel\", apellidos=\"de Cervantes\"),",
-        "detail": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
+        "peekOfCode": "router = APIRouter(prefix=\"/autores\", tags=[\"autores\"])\n# Modelo de datos para un autor\nclass Autor(BaseModel):\n    id: int\n    dni: str\n    nombre: str\n    apellidos: str\n# Lista simulada de autores\nAutorList = [\n    Autor(id=1, dni=\"12345678A\", nombre=\"Miguel\", apellidos=\"de Cervantes\"),",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "AutorList",
         "kind": 5,
-        "importPath": "API autores.Autores",
-        "description": "API autores.Autores",
-        "peekOfCode": "AutorList = [\n    Autor(id=1, dni=\"12345678A\", nombre=\"Miguel\", apellidos=\"de Cervantes\"),\n    Autor(id=2, dni=\"87654321B\", nombre=\"Federico\", apellidos=\"García Lorca\"),\n    Autor(id=3, dni=\"11223344C\", nombre=\"Rosalía\", apellidos=\"de Castro\")\n]\n# Endpoint para obtener todos los autores\n@app.get(\"/autores\")\ndef get_autores():\n    return get_all_autores()\n# Endpoint para obtener un autor por su ID",
-        "detail": "API autores.Autores",
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
+        "peekOfCode": "AutorList = [\n    Autor(id=1, dni=\"12345678A\", nombre=\"Miguel\", apellidos=\"de Cervantes\"),\n    Autor(id=2, dni=\"87654321B\", nombre=\"Federico\", apellidos=\"García Lorca\"),\n    Autor(id=3, dni=\"11223344C\", nombre=\"Rosalía\", apellidos=\"de Castro\")\n]\n# Endpoint para obtener todos los autores\n@router.get(\"/\")\ndef get_autores():\n    return get_all_autores()\n# Endpoint para obtener un autor por su ID",
+        "detail": "API.routers.autores",
         "documentation": {}
     },
     {
         "label": "Libro",
         "kind": 6,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
         "peekOfCode": "class Libro(BaseModel):\n    id: int\n    titulo: str\n    idAutor: int\n    isbn: str\n    numPaginas: int\n# Lista simulada de libros\nLibroList = [\n    Libro(id=1, titulo=\"Don Quijote de la Mancha\", idAutor=1, isbn=\"978-3-16-148410-0\", numPaginas=863),\n    Libro(id=2, titulo=\"La casa de Bernarda Alba\", idAutor=2, isbn=\"978-1-23-456789-0\", numPaginas=112),",
-        "detail": "API libros.Libros",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
         "label": "get_libros",
         "kind": 2,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
-        "peekOfCode": "def get_libros():\n    return get_all_libros()\n# Endpoint para obtener un libro por su ID\n@app.get(\"/libros/{id}\")\ndef get_libro(id: int):\n    libro = find_libro_by_id(id)\n    if libro:\n        return libro\n    raise HTTPException(status_code=404, detail=\"Libro no encontrado\")\n# Endpoint para crear un nuevo libro",
-        "detail": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
+        "peekOfCode": "def get_libros():\n    return get_all_libros()\n# Endpoint para obtener un libro por su ID\n@router.get(\"/{id}\")\ndef get_libro(id: int):\n    libro = find_libro_by_id(id)\n    if libro:\n        return libro\n    raise HTTPException(status_code=404, detail=\"Libro no encontrado\")\n# Endpoint para crear un nuevo libro",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
         "label": "get_libro",
         "kind": 2,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
-        "peekOfCode": "def get_libro(id: int):\n    libro = find_libro_by_id(id)\n    if libro:\n        return libro\n    raise HTTPException(status_code=404, detail=\"Libro no encontrado\")\n# Endpoint para crear un nuevo libro\n@app.post(\"/libros\", status_code=201, response_model=Libro)\ndef create_libro(libro: Libro):\n    libro.id = next_id()\n    add_libro(libro)",
-        "detail": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
+        "peekOfCode": "def get_libro(id: int):\n    libro = find_libro_by_id(id)\n    if libro:\n        return libro\n    raise HTTPException(status_code=404, detail=\"Libro no encontrado\")\n# Endpoint para crear un nuevo libro\n@router.post(\"/\", status_code=201, response_model=Libro)\ndef create_libro(libro: Libro):\n    libro.id = next_id()\n    add_libro(libro)",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
         "label": "create_libro",
         "kind": 2,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
-        "peekOfCode": "def create_libro(libro: Libro):\n    libro.id = next_id()\n    add_libro(libro)\n    return libro\n# Endpoint para modificar un libro existente\n@app.put(\"/libros/{id}\", response_model=Libro)\ndef modify_libro(id: int, libro: Libro): \n    updated = update_libro(id, libro)\n    if updated:\n        return updated",
-        "detail": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
+        "peekOfCode": "def create_libro(libro: Libro):\n    libro.id = next_id()\n    add_libro(libro)\n    return libro\n# Endpoint para modificar un libro existente\n@router.put(\"/{id}\", response_model=Libro)\ndef modify_libro(id: int, libro: Libro): \n    updated = update_libro(id, libro)\n    if updated:\n        return updated",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
         "label": "modify_libro",
         "kind": 2,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
-        "peekOfCode": "def modify_libro(id: int, libro: Libro): \n    updated = update_libro(id, libro)\n    if updated:\n        return updated\n    raise HTTPException(status_code=404, detail=\"Libro no encontrado\")\n# Endpoint para eliminar un libro por su ID\n@app.delete(\"/libros/{id}\", status_code=204)\ndef delete_libro(id: int):\n    removed = remove_libro(id)\n    if removed:",
-        "detail": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
+        "peekOfCode": "def modify_libro(id: int, libro: Libro): \n    updated = update_libro(id, libro)\n    if updated:\n        return updated\n    raise HTTPException(status_code=404, detail=\"Libro no encontrado\")\n# Endpoint para eliminar un libro por su ID\n@router.delete(\"/{id}\", status_code=204)\ndef delete_libro(id: int):\n    removed = remove_libro(id)\n    if removed:",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
         "label": "delete_libro",
         "kind": 2,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
-        "peekOfCode": "def delete_libro(id: int):\n    removed = remove_libro(id)\n    if removed:\n        return {}\n    raise HTTPException(status_code=404, detail=\"Libro no encontrado\")\n#region Funciones\n#Función para generar el siguiente ID disponible\ndef next_id():\n    if LibroList:\n        return (max(libro.id for libro in LibroList) + 1)",
-        "detail": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
+        "peekOfCode": "def delete_libro(id: int):\n    removed = remove_libro(id)\n    if removed:\n        return {}\n    raise HTTPException(status_code=404, detail=\"Libro no encontrado\")\n#endregion\n#region Funciones\n#Función para generar el siguiente ID disponible\ndef next_id():\n    if LibroList:",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
         "label": "next_id",
         "kind": 2,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
-        "peekOfCode": "def next_id():\n    if LibroList:\n        return (max(libro.id for libro in LibroList) + 1)\n    return 1\n#Funcion para obtener todos los libros\ndef get_all_libros():\n    return LibroList\n#Función para buscar un libro por su ID\n#Función para buscar un libro por su ID\ndef find_libro_by_id(id: int):",
-        "detail": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
+        "peekOfCode": "def next_id():\n    if LibroList:\n        return (max(libro.id for libro in LibroList) + 1)\n    return 1\n#Funcion para obtener todos los libros\ndef get_all_libros():\n    return LibroList\n#Función para buscar un libro por su ID\ndef find_libro_by_id(id: int):\n    resultados = [libro for libro in LibroList if libro.id == id]",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
         "label": "get_all_libros",
         "kind": 2,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
-        "peekOfCode": "def get_all_libros():\n    return LibroList\n#Función para buscar un libro por su ID\n#Función para buscar un libro por su ID\ndef find_libro_by_id(id: int):\n    resultados = [libro for libro in LibroList if libro.id == id]\n    return resultados[0] if resultados else None\n#Función para añadir un nuevo libro\ndef add_libro(libro: Libro):\n    LibroList.append(libro)",
-        "detail": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
+        "peekOfCode": "def get_all_libros():\n    return LibroList\n#Función para buscar un libro por su ID\ndef find_libro_by_id(id: int):\n    resultados = [libro for libro in LibroList if libro.id == id]\n    return resultados[0] if resultados else None\n#Función para añadir un nuevo libro\ndef add_libro(libro: Libro):\n    LibroList.append(libro)\n#Función para actualizar un libro existente",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
         "label": "find_libro_by_id",
         "kind": 2,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
         "peekOfCode": "def find_libro_by_id(id: int):\n    resultados = [libro for libro in LibroList if libro.id == id]\n    return resultados[0] if resultados else None\n#Función para añadir un nuevo libro\ndef add_libro(libro: Libro):\n    LibroList.append(libro)\n#Función para actualizar un libro existente\ndef update_libro(id: int, libro: Libro):\n    for index, saved_libro in enumerate(LibroList):\n        if saved_libro.id == id:",
-        "detail": "API libros.Libros",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
         "label": "add_libro",
         "kind": 2,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
         "peekOfCode": "def add_libro(libro: Libro):\n    LibroList.append(libro)\n#Función para actualizar un libro existente\ndef update_libro(id: int, libro: Libro):\n    for index, saved_libro in enumerate(LibroList):\n        if saved_libro.id == id:\n            libro.id = id\n            LibroList[index] = libro\n            return libro\n    return None",
-        "detail": "API libros.Libros",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
         "label": "update_libro",
         "kind": 2,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
         "peekOfCode": "def update_libro(id: int, libro: Libro):\n    for index, saved_libro in enumerate(LibroList):\n        if saved_libro.id == id:\n            libro.id = id\n            LibroList[index] = libro\n            return libro\n    return None\n#Función para eliminar un libro por su ID\ndef remove_libro(id: int):\n    for saved_libro in LibroList:",
-        "detail": "API libros.Libros",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
         "label": "remove_libro",
         "kind": 2,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
         "peekOfCode": "def remove_libro(id: int):\n    for saved_libro in LibroList:\n        if saved_libro.id == id:\n             LibroList.remove(saved_libro)\n             return True\n    return False\n#endregion",
-        "detail": "API libros.Libros",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
-        "label": "app",
+        "label": "router",
         "kind": 5,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
-        "peekOfCode": "app = FastAPI()\n# Modelo de datos para un libro\nclass Libro(BaseModel):\n    id: int\n    titulo: str\n    idAutor: int\n    isbn: str\n    numPaginas: int\n# Lista simulada de libros\nLibroList = [",
-        "detail": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
+        "peekOfCode": "router = APIRouter(prefix=\"/libros\", tags=[\"libros\"])\n# Modelo de datos para un libro\nclass Libro(BaseModel):\n    id: int\n    titulo: str\n    idAutor: int\n    isbn: str\n    numPaginas: int\n# Lista simulada de libros\nLibroList = [",
+        "detail": "API.routers.libros",
         "documentation": {}
     },
     {
         "label": "LibroList",
         "kind": 5,
-        "importPath": "API libros.Libros",
-        "description": "API libros.Libros",
-        "peekOfCode": "LibroList = [\n    Libro(id=1, titulo=\"Don Quijote de la Mancha\", idAutor=1, isbn=\"978-3-16-148410-0\", numPaginas=863),\n    Libro(id=2, titulo=\"La casa de Bernarda Alba\", idAutor=2, isbn=\"978-1-23-456789-0\", numPaginas=112),\n    Libro(id=3, titulo=\"Cantares Gallegos\", idAutor=3, isbn=\"978-0-12-345678-9\", numPaginas=78)\n]\n# Endpoint para obtener todos los libros\n@app.get(\"/libros\")\ndef get_libros():\n    return get_all_libros()\n# Endpoint para obtener un libro por su ID",
-        "detail": "API libros.Libros",
+        "importPath": "API.routers.libros",
+        "description": "API.routers.libros",
+        "peekOfCode": "LibroList = [\n    Libro(id=1, titulo=\"Don Quijote de la Mancha\", idAutor=1, isbn=\"978-3-16-148410-0\", numPaginas=863),\n    Libro(id=2, titulo=\"La casa de Bernarda Alba\", idAutor=2, isbn=\"978-1-23-456789-0\", numPaginas=112),\n    Libro(id=3, titulo=\"Cantares Gallegos\", idAutor=3, isbn=\"978-0-12-345678-9\", numPaginas=78)\n]\n#region Endpoints\n# Endpoint para obtener todos los libros\n@router.get(\"/\")\ndef get_libros():\n    return get_all_libros()",
+        "detail": "API.routers.libros",
+        "documentation": {}
+    },
+    {
+        "label": "read_root",
+        "kind": 2,
+        "importPath": "API.main",
+        "description": "API.main",
+        "peekOfCode": "def read_root():\n    return {\"message\": \"Welcome to the Library API\"}",
+        "detail": "API.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "API.main",
+        "description": "API.main",
+        "peekOfCode": "app = FastAPI()\napp.include_router(libros.router)\napp.include_router(autores.router)\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\n@app.get(\"/\")\ndef read_root():\n    return {\"message\": \"Welcome to the Library API\"}",
+        "detail": "API.main",
+        "documentation": {}
+    },
+    {
+        "label": "Director",
+        "kind": 6,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "class Director(BaseModel):\n    id: int\n    dni: str\n    nombre: str\n    apellidos: str\n    nacionalidad: str\n# Lista simulada de directores\nDirectorList = [\n    Director(id=1, dni=\"23456789D\", nombre=\"Steven\", apellidos =\"Spielberg\", nacionalidad=\"Estadounidense\"),\n    Director(id=2, dni=\"98765432E\", nombre=\"Martin\", apellidos =\"Scorsese\", nacionalidad=\"Estadounidense\"),",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "get_directores",
+        "kind": 2,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "def get_directores():\n    return get_all_directores()\n# Endpoint para obtener un director por su ID\n@router.get(\"/{id}\")\ndef get_director(id: int):\n    director = find_director_by_id(id)\n    if director:\n        return director\n    raise HTTPException(status_code=404, detail=\"Director no encontrado\")\n# Endpoint para crear un nuevo director",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "get_director",
+        "kind": 2,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "def get_director(id: int):\n    director = find_director_by_id(id)\n    if director:\n        return director\n    raise HTTPException(status_code=404, detail=\"Director no encontrado\")\n# Endpoint para crear un nuevo director\n@router.post(\"/\", status_code=201, response_model=Director)\ndef create_director(director: Director):\n    director.id = next_id()\n    add_director(director)",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "create_director",
+        "kind": 2,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "def create_director(director: Director):\n    director.id = next_id()\n    add_director(director)\n    return director\n# Endpoint para modificar un director existente\n@router.put(\"/{id}\", response_model=Director)\ndef modify_director(id: int, director: Director): \n    updated = update_director(id, director)\n    if updated:\n        return updated",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "modify_director",
+        "kind": 2,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "def modify_director(id: int, director: Director): \n    updated = update_director(id, director)\n    if updated:\n        return updated\n    raise HTTPException(status_code=404, detail=\"Director no encontrado\")\n# Endpoint para eliminar un director por su ID\n@router.delete(\"/{id}\", status_code=204)\ndef delete_director(id: int):\n    removed = remove_director(id)\n    if removed:",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "delete_director",
+        "kind": 2,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "def delete_director(id: int):\n    removed = remove_director(id)\n    if removed:\n        return {}\n    raise HTTPException(status_code=404, detail=\"Director no encontrado\")\n#endregion\n#region Funciones\n# Función para generar el siguiente ID disponible\ndef next_id():\n    if DirectorList:",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "next_id",
+        "kind": 2,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "def next_id():\n    if DirectorList:\n        return (max(director.id for director in DirectorList) + 1)\n    return 1\n# Funcion para obtener todos los directores\ndef get_all_directores():\n    return DirectorList\n#Funcion para buscar un director por su ID\ndef find_director_by_id(id: int):\n    resultados = [director for director in DirectorList if director.id == id]",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_directores",
+        "kind": 2,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "def get_all_directores():\n    return DirectorList\n#Funcion para buscar un director por su ID\ndef find_director_by_id(id: int):\n    resultados = [director for director in DirectorList if director.id == id]\n    return resultados[0] if resultados else None\n#Función para añadir un nuevo director\ndef add_director(director: Director):\n    DirectorList.append(director)\n#Función para actualizar un director existente",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "find_director_by_id",
+        "kind": 2,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "def find_director_by_id(id: int):\n    resultados = [director for director in DirectorList if director.id == id]\n    return resultados[0] if resultados else None\n#Función para añadir un nuevo director\ndef add_director(director: Director):\n    DirectorList.append(director)\n#Función para actualizar un director existente\ndef update_director(id: int, director: Director):\n    for index, d in enumerate(DirectorList):\n        if d.id == id:",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "add_director",
+        "kind": 2,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "def add_director(director: Director):\n    DirectorList.append(director)\n#Función para actualizar un director existente\ndef update_director(id: int, director: Director):\n    for index, d in enumerate(DirectorList):\n        if d.id == id:\n            director.id = id\n            DirectorList[index] = director\n            return director\n    return None",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "update_director",
+        "kind": 2,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "def update_director(id: int, director: Director):\n    for index, d in enumerate(DirectorList):\n        if d.id == id:\n            director.id = id\n            DirectorList[index] = director\n            return director\n    return None\n#Función para eliminar un director por su ID\ndef remove_director(id: int):\n    for d in DirectorList:",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "remove_director",
+        "kind": 2,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "def remove_director(id: int):\n    for d in DirectorList:\n        if d.id == id:\n             DirectorList.remove(d)\n             return True\n    return False\n#endregion",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "router = APIRouter(prefix=\"/directores\", tags=[\"directores\"])\n# Modelo de datos para un director\nclass Director(BaseModel):\n    id: int\n    dni: str\n    nombre: str\n    apellidos: str\n    nacionalidad: str\n# Lista simulada de directores\nDirectorList = [",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "DirectorList",
+        "kind": 5,
+        "importPath": "API2.routers.directores",
+        "description": "API2.routers.directores",
+        "peekOfCode": "DirectorList = [\n    Director(id=1, dni=\"23456789D\", nombre=\"Steven\", apellidos =\"Spielberg\", nacionalidad=\"Estadounidense\"),\n    Director(id=2, dni=\"98765432E\", nombre=\"Martin\", apellidos =\"Scorsese\", nacionalidad=\"Estadounidense\"),\n    Director(id=3, dni=\"22334455F\", nombre=\"Pedro\", apellidos =\"Almodóvar\", nacionalidad=\"Española\")\n]\n#region Endpoints\n# Endpoint para obtener todos los directores\n@router.get(\"/\")\ndef get_directores():\n    return get_all_directores()",
+        "detail": "API2.routers.directores",
+        "documentation": {}
+    },
+    {
+        "label": "Pelicula",
+        "kind": 6,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "class Pelicula(BaseModel):\n    id: int\n    titulo: str\n    duracionMins: int\n    idDirector: int\n# Lista simulada de películas\nPeliculaList = [\n    Pelicula(id=1, titulo=\"El Padrino\", duracionMins=175, idDirector=1),\n    Pelicula(id=2, titulo=\"E.T. el Extraterrestre\", duracionMins=115, idDirector=2),\n    Pelicula(id=3, titulo=\"La La Land\", duracionMins=128, idDirector=3)",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "get_peliculas",
+        "kind": 2,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "def get_peliculas():\n    return get_all_peliculas()\n# Endpoint para obtener una película por su ID\n@router.get(\"/{id}\")\ndef get_pelicula(id: int):\n    pelicula = find_pelicula_by_id(id)\n    if pelicula:\n        return pelicula\n    raise HTTPException(status_code=404, detail=\"Película no encontrada\")\n# Endpoint para crear una nueva película",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "get_pelicula",
+        "kind": 2,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "def get_pelicula(id: int):\n    pelicula = find_pelicula_by_id(id)\n    if pelicula:\n        return pelicula\n    raise HTTPException(status_code=404, detail=\"Película no encontrada\")\n# Endpoint para crear una nueva película\n@router.post(\"/\", status_code=201, response_model=Pelicula)\ndef create_pelicula(pelicula: Pelicula):\n    pelicula.id = next_id()\n    add_pelicula(pelicula)",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "create_pelicula",
+        "kind": 2,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "def create_pelicula(pelicula: Pelicula):\n    pelicula.id = next_id()\n    add_pelicula(pelicula)\n    return pelicula\n# Endpoint para modificar una película existente\n@router.put(\"/{id}\", response_model=Pelicula)\ndef modify_pelicula(id: int, pelicula: Pelicula): \n    updated = update_pelicula(id, pelicula)\n    if updated:\n        return updated",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "modify_pelicula",
+        "kind": 2,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "def modify_pelicula(id: int, pelicula: Pelicula): \n    updated = update_pelicula(id, pelicula)\n    if updated:\n        return updated\n    raise HTTPException(status_code=404, detail=\"Película no encontrada\")\n# Endpoint para eliminar una película por su ID\n@router.delete(\"/{id}\", status_code=204)\ndef delete_pelicula(id: int):\n    removed = remove_pelicula(id)\n    if removed:",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "delete_pelicula",
+        "kind": 2,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "def delete_pelicula(id: int):\n    removed = remove_pelicula(id)\n    if removed:\n        return {}\n    raise HTTPException(status_code=404, detail=\"Película no encontrada\")\n#endregion\n#region Funciones\n#Función para generar el siguiente ID disponible\ndef next_id():\n    if PeliculaList:",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "next_id",
+        "kind": 2,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "def next_id():\n    if PeliculaList:\n        return (max(pelicula.id for pelicula in PeliculaList) + 1)\n    return 1\n# Función para obtener todas las películas\ndef get_all_peliculas():\n    return PeliculaList\n#Función para buscar una película por su ID\ndef find_pelicula_by_id(id: int):\n    resultados = [pelicula for pelicula in PeliculaList if pelicula.id == id]",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_peliculas",
+        "kind": 2,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "def get_all_peliculas():\n    return PeliculaList\n#Función para buscar una película por su ID\ndef find_pelicula_by_id(id: int):\n    resultados = [pelicula for pelicula in PeliculaList if pelicula.id == id]\n    return resultados[0] if resultados else None\n#Función para agregar una nueva película\ndef add_pelicula(pelicula: Pelicula):\n    PeliculaList.append(pelicula)\n#Función para actualizar una película existente",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "find_pelicula_by_id",
+        "kind": 2,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "def find_pelicula_by_id(id: int):\n    resultados = [pelicula for pelicula in PeliculaList if pelicula.id == id]\n    return resultados[0] if resultados else None\n#Función para agregar una nueva película\ndef add_pelicula(pelicula: Pelicula):\n    PeliculaList.append(pelicula)\n#Función para actualizar una película existente\ndef update_pelicula(id: int, pelicula: Pelicula):\n    for index, existing_pelicula in enumerate(PeliculaList):\n        if existing_pelicula.id == id:",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "add_pelicula",
+        "kind": 2,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "def add_pelicula(pelicula: Pelicula):\n    PeliculaList.append(pelicula)\n#Función para actualizar una película existente\ndef update_pelicula(id: int, pelicula: Pelicula):\n    for index, existing_pelicula in enumerate(PeliculaList):\n        if existing_pelicula.id == id:\n            PeliculaList[index] = pelicula\n            return pelicula\n    return None\n#Función para eliminar una película por su ID",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "update_pelicula",
+        "kind": 2,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "def update_pelicula(id: int, pelicula: Pelicula):\n    for index, existing_pelicula in enumerate(PeliculaList):\n        if existing_pelicula.id == id:\n            PeliculaList[index] = pelicula\n            return pelicula\n    return None\n#Función para eliminar una película por su ID\ndef remove_pelicula(id: int):\n    for pelicula in PeliculaList:\n        if pelicula.id == id:",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "remove_pelicula",
+        "kind": 2,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "def remove_pelicula(id: int):\n    for pelicula in PeliculaList:\n        if pelicula.id == id:\n             PeliculaList.remove(pelicula)\n             return True\n    return False\n#endregion",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "router = APIRouter(prefix=\"/peliculas\", tags=[\"peliculas\"])\n# Modelo de datos para una película\nclass Pelicula(BaseModel):\n    id: int\n    titulo: str\n    duracionMins: int\n    idDirector: int\n# Lista simulada de películas\nPeliculaList = [\n    Pelicula(id=1, titulo=\"El Padrino\", duracionMins=175, idDirector=1),",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "PeliculaList",
+        "kind": 5,
+        "importPath": "API2.routers.peliculas",
+        "description": "API2.routers.peliculas",
+        "peekOfCode": "PeliculaList = [\n    Pelicula(id=1, titulo=\"El Padrino\", duracionMins=175, idDirector=1),\n    Pelicula(id=2, titulo=\"E.T. el Extraterrestre\", duracionMins=115, idDirector=2),\n    Pelicula(id=3, titulo=\"La La Land\", duracionMins=128, idDirector=3)\n]\n#region Endpoints\n# Endpoint para obtener todas las películas\n@router.get(\"/\")\ndef get_peliculas():\n    return get_all_peliculas()",
+        "detail": "API2.routers.peliculas",
+        "documentation": {}
+    },
+    {
+        "label": "read_root",
+        "kind": 2,
+        "importPath": "API2.main",
+        "description": "API2.main",
+        "peekOfCode": "def read_root():\n    return {\"message\": \"1\"}",
+        "detail": "API2.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "API2.main",
+        "description": "API2.main",
+        "peekOfCode": "app = FastAPI()\napp.include_router(directores.router)\napp.include_router(peliculas.router)\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\n@app.get(\"/\")\ndef read_root():\n    return {\"message\": \"1\"}",
+        "detail": "API2.main",
         "documentation": {}
     }
 ]
