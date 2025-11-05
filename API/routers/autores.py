@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException, APIRouter
 from pydantic import BaseModel
+from .libros import LibroList  # Importar aquí para evitar dependencias circulares
 
 router = APIRouter(prefix="/autores", tags=["autores"])
 
@@ -53,6 +54,15 @@ def delete_autor(id: int):
         return {}
     raise HTTPException(status_code=404, detail="Autor no encontrado")
 
+# Endpoint para obtener las peliculas de un autor por su ID
+@router.get("/{id}/libros")
+def get_libros_by_autor(id: int):
+    autor = find_autor_by_id(id)
+    if not autor:
+        raise HTTPException(status_code=404, detail="Autor no encontrado")
+    libros_del_autor = [libro for libro in LibroList if libro.idAutor == id]
+    return libros_del_autor
+
 #region Funciones 
 # Función para generar el siguiente ID disponible
 def next_id():
@@ -85,4 +95,6 @@ def remove_autor(id: int):
             AutorList.remove(saved_autor)
             return True
     return False
+
+
 #endregion

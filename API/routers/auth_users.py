@@ -1,0 +1,67 @@
+from pydantic import BaseModel
+import jwt
+from jwt.exceptions import InvalidTokenError
+from pwdlib import PasswordHash
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi import APIRouter, HTTPException
+
+
+oauth2 = OAuth2PasswordBearer(tokenUrl="login")
+
+router = APIRouter()
+
+class User(BaseModel):
+    username: str
+    email: str
+    full_name: str
+    disabled: bool
+
+class UserDB(User):
+    password: str
+
+user_db = {
+
+    "johndoe": {
+        "username": "johndoe",
+        "full_name": "John Doe",
+        "email": "johndoe@gmail.com",
+        "disabled": False,
+        "password": "1234"
+    },
+
+    "davidsmith": {
+        "username": "davidsmith",
+        "full_name": "David Smith",
+        "email": "davidsmith@gmail.com",
+        "disabled": True,
+        "password": "abcd"
+    },
+
+    "johndoe2": {
+        "username": "johndoe2",
+        "email": "johndoe2@gmail.com",
+        "full_name": "John Doe 2",
+        "disabled": False,
+        "password": "$argon2id$v=19$m=65536,t=3,p=4$uYNv8kxz7retOJ5oQo02wQ$ZepYH255L0y8ikmIjKfqUEPBL6haZHoSYU9T1pONO+c"
+    }
+
+}
+
+ALGORITHM = "HS256"
+
+ACCESS_TOKEN_EXPIRE_MINUTES = 10
+
+SECRET_KEY = "1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4"
+
+password_hash = PasswordHash.recommended()
+
+
+@router.post("/register", status_code=201)
+def register(user: UserDB):
+    if user.username not in user_db:
+        hashed_password = password_hash.hash(user.password)
+        user.password = hashed_password
+        user_db[user.username] = user
+        return user
+    else:
+        raise HTTPException(status_code=409, detail="User already exists")

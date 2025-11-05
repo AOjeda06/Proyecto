@@ -1,11 +1,13 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from routers import libros, autores
+from routers import libros, autores, auth_users
+
 
 app = FastAPI()
 
 app.include_router(libros.router)
 app.include_router(autores.router)
+app.include_router(auth_users.router)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 

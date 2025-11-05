@@ -1,5 +1,102 @@
 [
     {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "jwt",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "jwt",
+        "description": "jwt",
+        "detail": "jwt",
+        "documentation": {}
+    },
+    {
+        "label": "InvalidTokenError",
+        "importPath": "jwt.exceptions",
+        "description": "jwt.exceptions",
+        "isExtraImport": true,
+        "detail": "jwt.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PasswordHash",
+        "importPath": "pwdlib",
+        "description": "pwdlib",
+        "isExtraImport": true,
+        "detail": "pwdlib",
+        "documentation": {}
+    },
+    {
+        "label": "OAuth2PasswordBearer",
+        "importPath": "fastapi.security",
+        "description": "fastapi.security",
+        "isExtraImport": true,
+        "detail": "fastapi.security",
+        "documentation": {}
+    },
+    {
+        "label": "OAuth2PasswordRequestForm",
+        "importPath": "fastapi.security",
+        "description": "fastapi.security",
+        "isExtraImport": true,
+        "detail": "fastapi.security",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -109,38 +206,6 @@
         "description": "fastapi",
         "isExtraImport": true,
         "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
         "documentation": {}
     },
     {
@@ -176,6 +241,14 @@
         "documentation": {}
     },
     {
+        "label": "auth_users",
+        "importPath": "routers",
+        "description": "routers",
+        "isExtraImport": true,
+        "detail": "routers",
+        "documentation": {}
+    },
+    {
         "label": "directores",
         "importPath": "routers",
         "description": "routers",
@@ -189,6 +262,96 @@
         "description": "routers",
         "isExtraImport": true,
         "detail": "routers",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "API.routers.auth_users",
+        "description": "API.routers.auth_users",
+        "peekOfCode": "class User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nuser_db = {\n    \"johndoe\": {\n        \"username\": \"johndoe\",",
+        "detail": "API.routers.auth_users",
+        "documentation": {}
+    },
+    {
+        "label": "UserDB",
+        "kind": 6,
+        "importPath": "API.routers.auth_users",
+        "description": "API.routers.auth_users",
+        "peekOfCode": "class UserDB(User):\n    password: str\nuser_db = {\n    \"johndoe\": {\n        \"username\": \"johndoe\",\n        \"full_name\": \"John Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"disabled\": False,\n        \"password\": \"1234\"\n    },",
+        "detail": "API.routers.auth_users",
+        "documentation": {}
+    },
+    {
+        "label": "register",
+        "kind": 2,
+        "importPath": "API.routers.auth_users",
+        "description": "API.routers.auth_users",
+        "peekOfCode": "def register(user: UserDB):\n    if user.username not in user_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        user_db[user.username] = user\n        return user\n    else:\n        raise HTTPException(status_code=409, detail=\"User already exists\")",
+        "detail": "API.routers.auth_users",
+        "documentation": {}
+    },
+    {
+        "label": "oauth2",
+        "kind": 5,
+        "importPath": "API.routers.auth_users",
+        "description": "API.routers.auth_users",
+        "peekOfCode": "oauth2 = OAuth2PasswordBearer(tokenUrl=\"login\")\nrouter = APIRouter()\nclass User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nuser_db = {",
+        "detail": "API.routers.auth_users",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "API.routers.auth_users",
+        "description": "API.routers.auth_users",
+        "peekOfCode": "router = APIRouter()\nclass User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nuser_db = {\n    \"johndoe\": {",
+        "detail": "API.routers.auth_users",
+        "documentation": {}
+    },
+    {
+        "label": "user_db",
+        "kind": 5,
+        "importPath": "API.routers.auth_users",
+        "description": "API.routers.auth_users",
+        "peekOfCode": "user_db = {\n    \"johndoe\": {\n        \"username\": \"johndoe\",\n        \"full_name\": \"John Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"disabled\": False,\n        \"password\": \"1234\"\n    },\n    \"davidsmith\": {\n        \"username\": \"davidsmith\",",
+        "detail": "API.routers.auth_users",
+        "documentation": {}
+    },
+    {
+        "label": "ALGORITHM",
+        "kind": 5,
+        "importPath": "API.routers.auth_users",
+        "description": "API.routers.auth_users",
+        "peekOfCode": "ALGORITHM = \"HS256\"\nACCESS_TOKEN_EXPIRE_MINUTES = 10\nSECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in user_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        user_db[user.username] = user",
+        "detail": "API.routers.auth_users",
+        "documentation": {}
+    },
+    {
+        "label": "ACCESS_TOKEN_EXPIRE_MINUTES",
+        "kind": 5,
+        "importPath": "API.routers.auth_users",
+        "description": "API.routers.auth_users",
+        "peekOfCode": "ACCESS_TOKEN_EXPIRE_MINUTES = 10\nSECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in user_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        user_db[user.username] = user\n        return user",
+        "detail": "API.routers.auth_users",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "API.routers.auth_users",
+        "description": "API.routers.auth_users",
+        "peekOfCode": "SECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in user_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        user_db[user.username] = user\n        return user\n    else:",
+        "detail": "API.routers.auth_users",
+        "documentation": {}
+    },
+    {
+        "label": "password_hash",
+        "kind": 5,
+        "importPath": "API.routers.auth_users",
+        "description": "API.routers.auth_users",
+        "peekOfCode": "password_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in user_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        user_db[user.username] = user\n        return user\n    else:\n        raise HTTPException(status_code=409, detail=\"User already exists\")",
+        "detail": "API.routers.auth_users",
         "documentation": {}
     },
     {
@@ -241,7 +404,16 @@
         "kind": 2,
         "importPath": "API.routers.autores",
         "description": "API.routers.autores",
-        "peekOfCode": "def delete_autor(id: int):\n    removed = remove_autor(id)\n    if removed:\n        return {}\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n#region Funciones \n# Función para generar el siguiente ID disponible\ndef next_id():\n    if AutorList:\n        return (max(autor.id for autor in AutorList) + 1)",
+        "peekOfCode": "def delete_autor(id: int):\n    removed = remove_autor(id)\n    if removed:\n        return {}\n    raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n# Endpoint para obtener las peliculas de un autor por su ID\n@router.get(\"/{id}/libros\")\ndef get_libros_by_autor(id: int):\n    autor = find_autor_by_id(id)\n    if not autor:",
+        "detail": "API.routers.autores",
+        "documentation": {}
+    },
+    {
+        "label": "get_libros_by_autor",
+        "kind": 2,
+        "importPath": "API.routers.autores",
+        "description": "API.routers.autores",
+        "peekOfCode": "def get_libros_by_autor(id: int):\n    autor = find_autor_by_id(id)\n    if not autor:\n        raise HTTPException(status_code=404, detail=\"Autor no encontrado\")\n    libros_del_autor = [libro for libro in LibroList if libro.idAutor == id]\n    return libros_del_autor\n#region Funciones \n# Función para generar el siguiente ID disponible\ndef next_id():\n    if AutorList:",
         "detail": "API.routers.autores",
         "documentation": {}
     },
@@ -457,7 +629,7 @@
         "kind": 5,
         "importPath": "API.main",
         "description": "API.main",
-        "peekOfCode": "app = FastAPI()\napp.include_router(libros.router)\napp.include_router(autores.router)\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\n@app.get(\"/\")\ndef read_root():\n    return {\"message\": \"Welcome to the Library API\"}",
+        "peekOfCode": "app = FastAPI()\napp.include_router(libros.router)\napp.include_router(autores.router)\napp.include_router(auth_users.router)\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\n@app.get(\"/\")\ndef read_root():\n    return {\"message\": \"Welcome to the Library API\"}",
         "detail": "API.main",
         "documentation": {}
     },
