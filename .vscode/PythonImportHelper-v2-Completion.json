@@ -97,55 +97,7 @@
         "documentation": {}
     },
     {
-        "label": "FastAPI",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPException",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "APIRouter",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "FastAPI",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPException",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "APIRouter",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "FastAPI",
+        "label": "Depends",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -206,6 +158,86 @@
         "description": "fastapi",
         "isExtraImport": true,
         "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -269,7 +301,7 @@
         "kind": 6,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "class User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nuser_db = {\n    \"johndoe\": {\n        \"username\": \"johndoe\",",
+        "peekOfCode": "class User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nusers_db = {\n    \"johndoe\": {\n        \"username\": \"johndoe\",",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -278,7 +310,7 @@
         "kind": 6,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "class UserDB(User):\n    password: str\nuser_db = {\n    \"johndoe\": {\n        \"username\": \"johndoe\",\n        \"full_name\": \"John Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"disabled\": False,\n        \"password\": \"1234\"\n    },",
+        "peekOfCode": "class UserDB(User):\n    password: str\nusers_db = {\n    \"johndoe\": {\n        \"username\": \"johndoe\",\n        \"full_name\": \"John Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"disabled\": False,\n        \"password\": \"1234\"\n    },",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -287,7 +319,7 @@
         "kind": 2,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "def register(user: UserDB):\n    if user.username not in user_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        user_db[user.username] = user\n        return user\n    else:\n        raise HTTPException(status_code=409, detail=\"User already exists\")",
+        "peekOfCode": "def register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user\n        return user\n    else:\n        raise HTTPException(status_code=409, detail=\"User already exists\")\n@router.post(\"/login\")\nasync def login(form_data: OAuth2PasswordRequestForm = Depends()):",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -296,7 +328,7 @@
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "oauth2 = OAuth2PasswordBearer(tokenUrl=\"login\")\nrouter = APIRouter()\nclass User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nuser_db = {",
+        "peekOfCode": "oauth2 = OAuth2PasswordBearer(tokenUrl=\"login\")\nrouter = APIRouter()\nclass User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nusers_db = {",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -305,16 +337,16 @@
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "router = APIRouter()\nclass User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nuser_db = {\n    \"johndoe\": {",
+        "peekOfCode": "router = APIRouter()\nclass User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nusers_db = {\n    \"johndoe\": {",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
     {
-        "label": "user_db",
+        "label": "users_db",
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "user_db = {\n    \"johndoe\": {\n        \"username\": \"johndoe\",\n        \"full_name\": \"John Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"disabled\": False,\n        \"password\": \"1234\"\n    },\n    \"davidsmith\": {\n        \"username\": \"davidsmith\",",
+        "peekOfCode": "users_db = {\n    \"johndoe\": {\n        \"username\": \"johndoe\",\n        \"full_name\": \"John Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"disabled\": False,\n        \"password\": \"1234\"\n    },\n    \"davidsmith\": {\n        \"username\": \"davidsmith\",",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -323,7 +355,7 @@
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "ALGORITHM = \"HS256\"\nACCESS_TOKEN_EXPIRE_MINUTES = 10\nSECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in user_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        user_db[user.username] = user",
+        "peekOfCode": "ALGORITHM = \"HS256\"\nACCESS_TOKEN_EXPIRE_MINUTES = 10\nSECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -332,7 +364,7 @@
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "ACCESS_TOKEN_EXPIRE_MINUTES = 10\nSECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in user_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        user_db[user.username] = user\n        return user",
+        "peekOfCode": "ACCESS_TOKEN_EXPIRE_MINUTES = 10\nSECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user\n        return user",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -341,7 +373,7 @@
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "SECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in user_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        user_db[user.username] = user\n        return user\n    else:",
+        "peekOfCode": "SECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user\n        return user\n    else:",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -350,7 +382,7 @@
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "password_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in user_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        user_db[user.username] = user\n        return user\n    else:\n        raise HTTPException(status_code=409, detail=\"User already exists\")",
+        "peekOfCode": "password_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user\n        return user\n    else:\n        raise HTTPException(status_code=409, detail=\"User already exists\")",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },

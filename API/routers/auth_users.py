@@ -3,7 +3,8 @@ import jwt
 from jwt.exceptions import InvalidTokenError
 from pwdlib import PasswordHash
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+from datetime import datetime, timedelta, timezone
 
 
 oauth2 = OAuth2PasswordBearer(tokenUrl="login")
@@ -19,7 +20,7 @@ class User(BaseModel):
 class UserDB(User):
     password: str
 
-user_db = {
+users_db = {
 
     "johndoe": {
         "username": "johndoe",
@@ -58,10 +59,23 @@ password_hash = PasswordHash.recommended()
 
 @router.post("/register", status_code=201)
 def register(user: UserDB):
-    if user.username not in user_db:
+    if user.username not in users_db:
         hashed_password = password_hash.hash(user.password)
         user.password = hashed_password
-        user_db[user.username] = user
+        users_db[user.username] = user
         return user
     else:
         raise HTTPException(status_code=409, detail="User already exists")
+    
+@router.post("/login")
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    user_db = users_db.get(form_data.username)
+    if not user_db:
+        raise HTTPException(status_code=401, detail="Incorrect username or password")
+    user = UserDB(**users_db[form_data.username])
+    if not password_hash.verify(form_data.password, user.password):
+        raise HTTPException(status_code=401, detail="Incorrect username or password")
+    expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = {"sub": user.username, "exp": expire}
+    token = jwt.encode(access_token, SECRET_KEY, algorithm=ALGORITHM)
+    return {"access_token": token, "token_type": "bearer"}
