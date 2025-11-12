@@ -57,6 +57,14 @@
         "documentation": {}
     },
     {
+        "label": "PyJWTError",
+        "importPath": "jwt.exceptions",
+        "description": "jwt.exceptions",
+        "isExtraImport": true,
+        "detail": "jwt.exceptions",
+        "documentation": {}
+    },
+    {
         "label": "PasswordHash",
         "importPath": "pwdlib",
         "description": "pwdlib",
@@ -122,6 +130,14 @@
     },
     {
         "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -319,7 +335,7 @@
         "kind": 2,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "def register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user\n        return user\n    else:\n        raise HTTPException(status_code=409, detail=\"User already exists\")\n@router.post(\"/login\")\nasync def login(form_data: OAuth2PasswordRequestForm = Depends()):",
+        "peekOfCode": "def register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user.model_dump()\n        return user\n    else:\n        raise HTTPException(status_code=409, detail=\"User already exists\")\n@router.post(\"/login\")\nasync def login(form_data: OAuth2PasswordRequestForm = Depends()):",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -355,7 +371,7 @@
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "ALGORITHM = \"HS256\"\nACCESS_TOKEN_EXPIRE_MINUTES = 10\nSECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user",
+        "peekOfCode": "ALGORITHM = \"HS256\"\nACCESS_TOKEN_EXPIRE_MINUTES = 10\nSECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user.model_dump()",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -364,7 +380,7 @@
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "ACCESS_TOKEN_EXPIRE_MINUTES = 10\nSECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user\n        return user",
+        "peekOfCode": "ACCESS_TOKEN_EXPIRE_MINUTES = 10\nSECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user.model_dump()\n        return user",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -373,7 +389,7 @@
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "SECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user\n        return user\n    else:",
+        "peekOfCode": "SECRET_KEY = \"1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4\"\npassword_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user.model_dump()\n        return user\n    else:",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -382,7 +398,7 @@
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "password_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user\n        return user\n    else:\n        raise HTTPException(status_code=409, detail=\"User already exists\")",
+        "peekOfCode": "password_hash = PasswordHash.recommended()\n@router.post(\"/register\", status_code=201)\ndef register(user: UserDB):\n    if user.username not in users_db:\n        hashed_password = password_hash.hash(user.password)\n        user.password = hashed_password\n        users_db[user.username] = user.model_dump()\n        return user\n    else:\n        raise HTTPException(status_code=409, detail=\"User already exists\")",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },

@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 import jwt
-from jwt.exceptions import InvalidTokenError
+from jwt.exceptions import InvalidTokenError, PyJWTError
 from pwdlib import PasswordHash
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi import APIRouter, HTTPException, Depends
@@ -62,7 +62,7 @@ def register(user: UserDB):
     if user.username not in users_db:
         hashed_password = password_hash.hash(user.password)
         user.password = hashed_password
-        users_db[user.username] = user
+        users_db[user.username] = user.model_dump()
         return user
     else:
         raise HTTPException(status_code=409, detail="User already exists")
@@ -79,3 +79,15 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     access_token = {"sub": user.username, "exp": expire}
     token = jwt.encode(access_token, SECRET_KEY, algorithm=ALGORITHM)
     return {"access_token": token, "token_type": "bearer"}
+
+async def authentication(token: str = Depends(oauth2)):
+    try:
+        username = jwt.decode(token, SECRET_KEY, algorithm=[ALGORITHM]).get("sub")
+        if username is None:
+            raise HTTPException(status_code=401, detail="Could not validate credentials")
+    except PyJWTError:
+        raise HTTPException(status_code=401, detail="Could not validate credentials")
+    user = User(**users_db[username])
+    if user.disabled:
+        raise HTTPException(status_code=400, detail="Inactive user")
+    return user
