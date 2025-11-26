@@ -6,7 +6,6 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi import APIRouter, HTTPException, Depends
 from datetime import datetime, timedelta, timezone
 
-
 oauth2 = OAuth2PasswordBearer(tokenUrl="login")
 
 router = APIRouter()
@@ -21,7 +20,6 @@ class UserDB(User):
     password: str
 
 users_db = {
-
     "johndoe": {
         "username": "johndoe",
         "full_name": "John Doe",
@@ -45,7 +43,6 @@ users_db = {
         "disabled": False,
         "password": "$argon2id$v=19$m=65536,t=3,p=4$uYNv8kxz7retOJ5oQo02wQ$ZepYH255L0y8ikmIjKfqUEPBL6haZHoSYU9T1pONO+c"
     }
-
 }
 
 ALGORITHM = "HS256"
@@ -55,7 +52,6 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 10
 SECRET_KEY = "1aff6790e2c656dac3c4b9240cfa6a7e221235725d73d005ba93102fc2ee3cd4"
 
 password_hash = PasswordHash.recommended()
-
 
 @router.post("/register", status_code=201)
 def register(user: UserDB):
