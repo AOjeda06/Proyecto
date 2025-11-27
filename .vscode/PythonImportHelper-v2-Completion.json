@@ -317,7 +317,7 @@
         "kind": 6,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "class User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nusers_db = {\n    \"johndoe\": {\n        \"username\": \"johndoe\",",
+        "peekOfCode": "class User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nusers_db = {\n    # password: 12345 \n    \"johndoe2\": {",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -326,7 +326,7 @@
         "kind": 6,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "class UserDB(User):\n    password: str\nusers_db = {\n    \"johndoe\": {\n        \"username\": \"johndoe\",\n        \"full_name\": \"John Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"disabled\": False,\n        \"password\": \"1234\"\n    },",
+        "peekOfCode": "class UserDB(User):\n    password: str\nusers_db = {\n    # password: 12345 \n    \"johndoe2\": {\n        \"username\": \"johndoe2\",\n        \"email\": \"johndoe2@gmail.com\",\n        \"full_name\": \"John Doe 2\",\n        \"disabled\": False,\n        \"password\": \"$argon2id$v=19$m=65536,t=3,p=4$uYNv8kxz7retOJ5oQo02wQ$ZepYH255L0y8ikmIjKfqUEPBL6haZHoSYU9T1pONO+c\"",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -353,7 +353,7 @@
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "router = APIRouter()\nclass User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nusers_db = {\n    \"johndoe\": {",
+        "peekOfCode": "router = APIRouter()\nclass User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    disabled: bool\nclass UserDB(User):\n    password: str\nusers_db = {\n    # password: 12345 ",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },
@@ -362,7 +362,7 @@
         "kind": 5,
         "importPath": "API.routers.auth_users",
         "description": "API.routers.auth_users",
-        "peekOfCode": "users_db = {\n    \"johndoe\": {\n        \"username\": \"johndoe\",\n        \"full_name\": \"John Doe\",\n        \"email\": \"johndoe@gmail.com\",\n        \"disabled\": False,\n        \"password\": \"1234\"\n    },\n    \"davidsmith\": {\n        \"username\": \"davidsmith\",",
+        "peekOfCode": "users_db = {\n    # password: 12345 \n    \"johndoe2\": {\n        \"username\": \"johndoe2\",\n        \"email\": \"johndoe2@gmail.com\",\n        \"full_name\": \"John Doe 2\",\n        \"disabled\": False,\n        \"password\": \"$argon2id$v=19$m=65536,t=3,p=4$uYNv8kxz7retOJ5oQo02wQ$ZepYH255L0y8ikmIjKfqUEPBL6haZHoSYU9T1pONO+c\"\n    }\n}",
         "detail": "API.routers.auth_users",
         "documentation": {}
     },

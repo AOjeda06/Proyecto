@@ -20,22 +20,7 @@ class UserDB(User):
     password: str
 
 users_db = {
-    "johndoe": {
-        "username": "johndoe",
-        "full_name": "John Doe",
-        "email": "johndoe@gmail.com",
-        "disabled": False,
-        "password": "1234"
-    },
-
-    "davidsmith": {
-        "username": "davidsmith",
-        "full_name": "David Smith",
-        "email": "davidsmith@gmail.com",
-        "disabled": True,
-        "password": "abcd"
-    },
-
+    # password: 12345 
     "johndoe2": {
         "username": "johndoe2",
         "email": "johndoe2@gmail.com",
@@ -86,4 +71,8 @@ async def authentication(token: str = Depends(oauth2)):
     user = User(**users_db[username])
     if user.disabled:
         raise HTTPException(status_code=400, detail="Inactive user")
+    return user
+
+@router.get("/auth/me")
+async def me(user: User = Depends(authentication)):
     return user
