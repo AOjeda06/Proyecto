@@ -1,33 +1,34 @@
 from fastapi import FastAPI, HTTPException, APIRouter
 from pydantic import BaseModel
+from bson import ObjectId
+
+from db.client import db_client
+from db.models.libro import Libro
+from db.schemas.libro import libro_schema, libros_schema
 
 router = APIRouter(prefix="/libros", tags=["libros"])
 
-# Modelo de datos para un libro
-class Libro(BaseModel):
-    id: int
-    titulo: str
-    idAutor: int
-    isbn: str
-    numPaginas: int
-
 # Lista simulada de libros
-LibroList = [
-    Libro(id=1, titulo="Don Quijote de la Mancha", idAutor=1, isbn="978-3-16-148410-0", numPaginas=863),
-    Libro(id=2, titulo="La casa de Bernarda Alba", idAutor=2, isbn="978-1-23-456789-0", numPaginas=112),
-    Libro(id=3, titulo="Cantares Gallegos", idAutor=3, isbn="978-0-12-345678-9", numPaginas=78)
-]
+LibroList = []
 
 #region Endpoints
 
 # Endpoint para obtener todos los libros
-@router.get("/")
-def get_libros():
-    return get_all_libros()
+@router.get("/", response_model=list[Libro])
+async def get_libros():
+    return libros_schema(db_client.test.libros.find())
 
-# Endpoint para obtener un libro por su ID
-@router.get("/{id}")
-def get_libro(id: int):
+# Endpoint para obtener un libro por su ID (Query)
+@router.get("", response_model=Libro)
+async def get_libro_query(id: str):
+    libro = find_libro_by_id(id)
+    if libro:
+        return libro
+    raise HTTPException(status_code=404, detail="Libro no encontrado")
+
+# Endpoint para obtener un libro por su ID (Path)
+@router.get("/{id}", response_model=Libro)
+async def get_libro(id: str):
     libro = find_libro_by_id(id)
     if libro:
         return libro
@@ -35,64 +36,49 @@ def get_libro(id: int):
 
 # Endpoint para crear un nuevo libro
 @router.post("/", status_code=201, response_model=Libro)
-def create_libro(libro: Libro):
-    libro.id = next_id()
-    add_libro(libro)
-    return libro
+async def create_libro(libro: Libro):
+    if type(find_libro_by_isbn(libro.isbn)) == Libro:
+        raise HTTPException(status_code=409, detail="El libro con ese ISBN ya existe")
+    libro_dict = libro.model_dump()
+    del libro_dict["id"]
+    id = db_client.test.libros.insert_one(libro_dict).inserted_id
+    libro_dict["id"] = str(id)
+    return Libro(**libro_dict)
 
 # Endpoint para modificar un libro existente
 @router.put("/{id}", response_model=Libro)
-def modify_libro(id: int, libro: Libro): 
-    updated = update_libro(id, libro)
-    if updated:
-        return updated
-    raise HTTPException(status_code=404, detail="Libro no encontrado")
+async def modify_libro(id: str, new_libro: Libro): 
+    libro_dict = new_libro.model_dump()
+    del libro_dict["id"]
+    try:
+        db_client.test.libros.find_one_and_replace({"_id":ObjectId(id)}, libro_dict)
+        return find_libro_by_id(id)
+    except:
+        raise HTTPException(status_code=404, detail="Libro no encontrado")
 
 # Endpoint para eliminar un libro por su ID
-@router.delete("/{id}", status_code=204)
-def delete_libro(id: int):
-    removed = remove_libro(id)
-    if removed:
-        return {}
-    raise HTTPException(status_code=404, detail="Libro no encontrado")
+@router.delete("/{id}", status_code=204, response_model=Libro)
+async def delete_libro(id: str):
+    found = db_client.test.libros.find_one_and_delete({"_id":ObjectId(id)})
+    if not found:
+        raise HTTPException(status_code=404, detail="Libro no encontrado")
+    return Libro(**libro_schema(found))
 
 #endregion
 
 #region Funciones
 
-#Función para generar el siguiente ID disponible
-def next_id():
-    if LibroList:
-        return (max(libro.id for libro in LibroList) + 1)
-    return 1
+def find_libro_by_id(id: str):
+    try:
+        libro = libro_schema(db_client.test.libros.find_one({"_id":ObjectId(id)}))
+        return Libro(**libro)
+    except:
+        return {"error":"Libro no encontrado"}    
 
-#Funcion para obtener todos los libros
-def get_all_libros():
-    return LibroList
-
-#Función para buscar un libro por su ID
-def find_libro_by_id(id: int):
-    resultados = [libro for libro in LibroList if libro.id == id]
-    return resultados[0] if resultados else None
-
-#Función para añadir un nuevo libro
-def add_libro(libro: Libro):
-    LibroList.append(libro)
-
-#Función para actualizar un libro existente
-def update_libro(id: int, libro: Libro):
-    for index, saved_libro in enumerate(LibroList):
-        if saved_libro.id == id:
-            libro.id = id
-            LibroList[index] = libro
-            return libro
-    return None
-
-#Función para eliminar un libro por su ID
-def remove_libro(id: int):
-    for saved_libro in LibroList:
-        if saved_libro.id == id:
-             LibroList.remove(saved_libro)
-             return True
-    return False
+def find_libro_by_isbn(isbn: str):
+    try:
+        libro = libro_schema(db_client.test.libros.find_one({"isbn":isbn}))
+        return Libro(**libro)
+    except:
+        return {"error":"Libro no encontrado"}
 #endregion

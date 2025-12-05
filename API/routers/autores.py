@@ -1,31 +1,34 @@
 from fastapi import FastAPI, HTTPException, APIRouter, Depends
 from pydantic import BaseModel
-from .libros import LibroList  # Importar aquí para evitar dependencias circulares
+import routers
+from API.db.schemas.libro import libro_schema, libros_schema
+from .libros import LibroList  
+from db.models.autor import Autor 
+from db.client import db_client
+from db.schemas.autor import autor_schema, autores_schema
+from bson import ObjectId
 
 router = APIRouter(prefix="/autores", tags=["autores"])
 
-# Modelo de datos para un autor
-class Autor(BaseModel):
-    id: int
-    dni: str
-    nombre: str
-    apellidos: str
-
 # Lista simulada de autores
-AutorList = [
-    Autor(id=1, dni="12345678A", nombre="Miguel", apellidos="de Cervantes"),
-    Autor(id=2, dni="87654321B", nombre="Federico", apellidos="García Lorca"),
-    Autor(id=3, dni="11223344C", nombre="Rosalía", apellidos="de Castro")
-]
+AutorList = []
 
 # Endpoint para obtener todos los autores
-@router.get("/")
-def get_autores():
-    return get_all_autores()
+@router.get("/", response_model=list[Autor])
+async def autores():
+    return autores_schema(db_client.test.autores.find())
+
+# Endpoint para obtener un autor por su ID (Query)
+@router.get("", response_model=Autor)
+async def autor(id : str):
+    autor = find_autor_by_id(id)
+    if autor:
+        return autor
+    raise HTTPException(status_code=404, detail="Autor no encontrado")
 
 # Endpoint para obtener un autor por su ID
-@router.get("/{id}")
-def get_autor(id: int):
+@router.get("/{id}", response_model=Autor)
+async def autor(id: str):
     autor = find_autor_by_id(id)
     if autor:
         return autor
@@ -33,68 +36,56 @@ def get_autor(id: int):
 
 # Endpoint para crear un nuevo autor
 @router.post("/", status_code=201, response_model=Autor)
-def create_autor(autor: Autor):
-    autor.id = next_id()
-    add_autor(autor)
-    return autor
+async def add_autor(autor: Autor):
+    if type(find_autor_by_dni(autor.dni)) == Autor:
+        raise HTTPException(status_code=409, detail="El autor con ese DNI ya existe")
+    autor_dict = autor.model_dump()
+    del autor_dict["id"]
+    id = db_client.test.autores.insert_one(autor_dict).inserted_id
+    autor_dict["id"] = str(id)
+    return Autor(**autor_dict)
 
 # Endpoint para modificar un autor existente
 @router.put("/{id}", response_model=Autor)
-def modify_autor(id: int, autor: Autor): 
-    updated = update_autor(id, autor)
-    if updated:
-        return updated
-    raise HTTPException(status_code=404, detail="Autor no encontrado")
-
+async def modify_autor(id: str, new_autor: Autor): 
+    autor_dict = new_autor.model_dump()
+    del autor_dict["id"]
+    try:
+        db_client.test.autores.find_one_and_replace({"_id":ObjectId(id)}, autor_dict)
+        return find_autor_by_id(id)
+    except:
+        raise HTTPException(status_code=404, detail="Autor no encontrado")
+    
 # Endpoint para eliminar un autor por su ID
-@router.delete("/{id}", status_code=204)
-def delete_autor(id: int):
-    removed = remove_autor(id)
-    if removed:
-        return {}
-    raise HTTPException(status_code=404, detail="Autor no encontrado")
+@router.delete("/{id}", status_code=204, response_model=Autor)
+async def delete_autor(id: str):
+    found = db_client.test.autores.find_one_and_delete({"_id":ObjectId(id)})
+    if not found:
+        raise HTTPException(status_code=404, detail="Autor no encontrado")
+    return Autor(**autor_schema(found))
 
-# Endpoint para obtener las peliculas de un autor por su ID
-@router.get("/{id}/libros")
-def get_libros_by_autor(id: int):
+# Endpoint para obtener los libros de un autor por su ID
+@router.get("/{id}/libros", response_model=list[routers.libros.Libro])
+async def get_libros_by_autor(id: str):
     autor = find_autor_by_id(id)
     if not autor:
         raise HTTPException(status_code=404, detail="Autor no encontrado")
-    libros_del_autor = [libro for libro in LibroList if libro.idAutor == id]
-    return libros_del_autor
+    libros_del_autor = libros_schema(db_client.test.libros.find({"idAutor":ObjectId(id)}))
+    return libros_del_autor   
 
 #region Funciones 
-# Función para generar el siguiente ID disponible
-def next_id():
-    if AutorList:
-        return (max(autor.id for autor in AutorList) + 1)
-    return 1
 
-# Funciones extraídas para operaciones sobre AutorList
-def get_all_autores():
-    return AutorList
+def find_autor_by_id(id: str):
+    try:
+        autor = autor_schema(db_client.test.autores.find_one({"_id":ObjectId(id)}))
+        return autor(**autor)
+    except:
+        return {"error":"Autor no encontrado"}    
 
-def find_autor_by_id(id: int):
-    autores = [autor for autor in AutorList if autor.id == id]
-    return autores[0] if autores else None
-
-def add_autor(autor: Autor):
-    AutorList.append(autor)
-
-def update_autor(id: int, autor: Autor):
-    for index, saved_autor in enumerate(AutorList):
-        if saved_autor.id == id:
-            autor.id = id
-            AutorList[index] = autor
-            return autor
-    return None
-
-def remove_autor(id: int):
-    for index, saved_autor in enumerate(AutorList):
-        if saved_autor.id == id:
-            AutorList.remove(saved_autor)
-            return True
-    return False
-
-
+def find_autor_by_dni(dni: str):
+    try:
+        autor = autor_schema(db_client.test.autores.find_one({"dni":dni}))
+        return autor(**autor)
+    except:
+        return {"error":"Autor no encontrado"}
 #endregion
