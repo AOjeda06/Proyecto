@@ -1,15 +1,14 @@
 from fastapi import FastAPI, HTTPException, APIRouter
 from pydantic import BaseModel
 from bson import ObjectId
+from API import routers
 
-from db.client import db_client
-from db.models.libro import Libro
-from db.schemas.libro import libro_schema, libros_schema
+from API.db.client import db_client
+from API.db.models.libro import Libro 
+from API.db.schemas.libro import libro_schema, libros_schema
+
 
 router = APIRouter(prefix="/libros", tags=["libros"])
-
-# Lista simulada de libros
-LibroList = []
 
 #region Endpoints
 
@@ -57,7 +56,7 @@ async def modify_libro(id: str, new_libro: Libro):
         raise HTTPException(status_code=404, detail="Libro no encontrado")
 
 # Endpoint para eliminar un libro por su ID
-@router.delete("/{id}", status_code=204, response_model=Libro)
+@router.delete("/{id}", response_model=Libro)
 async def delete_libro(id: str):
     found = db_client.test.libros.find_one_and_delete({"_id":ObjectId(id)})
     if not found:

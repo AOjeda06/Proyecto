@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, APIRouter
 from pydantic import BaseModel
 
-router = APIRouter(prefix="/libros", tags=["libros"])
+# router = APIRouter(prefix="/libros", tags=["libros"])
 
 # Modelo de datos para un libro
 class Libro(BaseModel):

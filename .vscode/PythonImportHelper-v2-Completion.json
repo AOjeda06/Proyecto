@@ -112,14 +112,6 @@
         "documentation": {}
     },
     {
-        "label": "FastAPI",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
         "label": "HTTPException",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -129,70 +121,6 @@
     },
     {
         "label": "APIRouter",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "Depends",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "FastAPI",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPException",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "APIRouter",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "FastAPI",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPException",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "APIRouter",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -256,11 +184,59 @@
         "documentation": {}
     },
     {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "pydantic",
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
         "documentation": {}
     },
     {
@@ -410,35 +386,146 @@
     },
     {
         "label": "routers",
-        "kind": 6,
+        "importPath": "API",
+        "description": "API",
         "isExtraImport": true,
-        "importPath": "routers",
-        "description": "routers",
-        "detail": "routers",
+        "detail": "API",
+        "documentation": {}
+    },
+    {
+        "label": "routers",
+        "importPath": "API",
+        "description": "API",
+        "isExtraImport": true,
+        "detail": "API",
+        "documentation": {}
+    },
+    {
+        "label": "libros_schema",
+        "importPath": "API.db.schemas.libro",
+        "description": "API.db.schemas.libro",
+        "isExtraImport": true,
+        "detail": "API.db.schemas.libro",
+        "documentation": {}
+    },
+    {
+        "label": "libro_schema",
+        "importPath": "API.db.schemas.libro",
+        "description": "API.db.schemas.libro",
+        "isExtraImport": true,
+        "detail": "API.db.schemas.libro",
+        "documentation": {}
+    },
+    {
+        "label": "libros_schema",
+        "importPath": "API.db.schemas.libro",
+        "description": "API.db.schemas.libro",
+        "isExtraImport": true,
+        "detail": "API.db.schemas.libro",
+        "documentation": {}
+    },
+    {
+        "label": "db_client",
+        "importPath": "API.db.client",
+        "description": "API.db.client",
+        "isExtraImport": true,
+        "detail": "API.db.client",
+        "documentation": {}
+    },
+    {
+        "label": "db_client",
+        "importPath": "API.db.client",
+        "description": "API.db.client",
+        "isExtraImport": true,
+        "detail": "API.db.client",
+        "documentation": {}
+    },
+    {
+        "label": "Autor",
+        "importPath": "API.db.models.autor",
+        "description": "API.db.models.autor",
+        "isExtraImport": true,
+        "detail": "API.db.models.autor",
+        "documentation": {}
+    },
+    {
+        "label": "autor_schema",
+        "importPath": "API.db.schemas.autor",
+        "description": "API.db.schemas.autor",
+        "isExtraImport": true,
+        "detail": "API.db.schemas.autor",
+        "documentation": {}
+    },
+    {
+        "label": "autores_schema",
+        "importPath": "API.db.schemas.autor",
+        "description": "API.db.schemas.autor",
+        "isExtraImport": true,
+        "detail": "API.db.schemas.autor",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson",
+        "description": "bson",
+        "isExtraImport": true,
+        "detail": "bson",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson",
+        "description": "bson",
+        "isExtraImport": true,
+        "detail": "bson",
+        "documentation": {}
+    },
+    {
+        "label": "Libro",
+        "importPath": "API.db.models.libro",
+        "description": "API.db.models.libro",
+        "isExtraImport": true,
+        "detail": "API.db.models.libro",
+        "documentation": {}
+    },
+    {
+        "label": "StaticFiles",
+        "importPath": "fastapi.staticfiles",
+        "description": "fastapi.staticfiles",
+        "isExtraImport": true,
+        "detail": "fastapi.staticfiles",
+        "documentation": {}
+    },
+    {
+        "label": "StaticFiles",
+        "importPath": "fastapi.staticfiles",
+        "description": "fastapi.staticfiles",
+        "isExtraImport": true,
+        "detail": "fastapi.staticfiles",
         "documentation": {}
     },
     {
         "label": "libros",
-        "importPath": "routers",
-        "description": "routers",
+        "importPath": "API.routers",
+        "description": "API.routers",
         "isExtraImport": true,
-        "detail": "routers",
+        "detail": "API.routers",
         "documentation": {}
     },
     {
         "label": "autores",
-        "importPath": "routers",
-        "description": "routers",
+        "importPath": "API.routers",
+        "description": "API.routers",
         "isExtraImport": true,
-        "detail": "routers",
+        "detail": "API.routers",
         "documentation": {}
     },
     {
         "label": "auth_users",
-        "importPath": "routers",
-        "description": "routers",
+        "importPath": "API.routers",
+        "description": "API.routers",
         "isExtraImport": true,
-        "detail": "routers",
+        "detail": "API.routers",
         "documentation": {}
     },
     {
@@ -458,123 +545,11 @@
         "documentation": {}
     },
     {
-        "label": "libro_schema",
-        "importPath": "API.db.schemas.libro",
-        "description": "API.db.schemas.libro",
-        "isExtraImport": true,
-        "detail": "API.db.schemas.libro",
-        "documentation": {}
-    },
-    {
-        "label": "libros_schema",
-        "importPath": "API.db.schemas.libro",
-        "description": "API.db.schemas.libro",
-        "isExtraImport": true,
-        "detail": "API.db.schemas.libro",
-        "documentation": {}
-    },
-    {
-        "label": "Autor",
-        "importPath": "db.models.autor",
-        "description": "db.models.autor",
-        "isExtraImport": true,
-        "detail": "db.models.autor",
-        "documentation": {}
-    },
-    {
-        "label": "db_client",
-        "importPath": "db.client",
-        "description": "db.client",
-        "isExtraImport": true,
-        "detail": "db.client",
-        "documentation": {}
-    },
-    {
-        "label": "db_client",
-        "importPath": "db.client",
-        "description": "db.client",
-        "isExtraImport": true,
-        "detail": "db.client",
-        "documentation": {}
-    },
-    {
-        "label": "autor_schema",
-        "importPath": "db.schemas.autor",
-        "description": "db.schemas.autor",
-        "isExtraImport": true,
-        "detail": "db.schemas.autor",
-        "documentation": {}
-    },
-    {
-        "label": "autores_schema",
-        "importPath": "db.schemas.autor",
-        "description": "db.schemas.autor",
-        "isExtraImport": true,
-        "detail": "db.schemas.autor",
-        "documentation": {}
-    },
-    {
-        "label": "ObjectId",
-        "importPath": "bson",
-        "description": "bson",
-        "isExtraImport": true,
-        "detail": "bson",
-        "documentation": {}
-    },
-    {
-        "label": "ObjectId",
-        "importPath": "bson",
-        "description": "bson",
-        "isExtraImport": true,
-        "detail": "bson",
-        "documentation": {}
-    },
-    {
-        "label": "Libro",
-        "importPath": "db.models.libro",
-        "description": "db.models.libro",
-        "isExtraImport": true,
-        "detail": "db.models.libro",
-        "documentation": {}
-    },
-    {
-        "label": "libro_schema",
-        "importPath": "db.schemas.libro",
-        "description": "db.schemas.libro",
-        "isExtraImport": true,
-        "detail": "db.schemas.libro",
-        "documentation": {}
-    },
-    {
-        "label": "libros_schema",
-        "importPath": "db.schemas.libro",
-        "description": "db.schemas.libro",
-        "isExtraImport": true,
-        "detail": "db.schemas.libro",
-        "documentation": {}
-    },
-    {
-        "label": "StaticFiles",
-        "importPath": "fastapi.staticfiles",
-        "description": "fastapi.staticfiles",
-        "isExtraImport": true,
-        "detail": "fastapi.staticfiles",
-        "documentation": {}
-    },
-    {
-        "label": "StaticFiles",
-        "importPath": "fastapi.staticfiles",
-        "description": "fastapi.staticfiles",
-        "isExtraImport": true,
-        "detail": "fastapi.staticfiles",
-        "documentation": {}
-    },
-    {
         "label": "Autor",
         "kind": 6,
         "importPath": "API.db.models.autor",
         "description": "API.db.models.autor",
-        "peekOfCode": "class Autor(BaseModel):\n    id: int\n    dni: str\n    nombre: str\n    apellidos: str",
+        "peekOfCode": "class Autor(BaseModel):\n    id: str\n    dni: str\n    nombre: str\n    apellidos: str",
         "detail": "API.db.models.autor",
         "documentation": {}
     },
@@ -583,7 +558,7 @@
         "kind": 6,
         "importPath": "API.db.models.libro",
         "description": "API.db.models.libro",
-        "peekOfCode": "class Libro(BaseModel):\n    id: int\n    titulo: str\n    idAutor: int\n    isbn: str\n    numPaginas: int",
+        "peekOfCode": "class Libro(BaseModel):\n    id: str\n    titulo: str\n    idAutor: int\n    isbn: str\n    numPaginas: int",
         "detail": "API.db.models.libro",
         "documentation": {}
     },
@@ -840,15 +815,6 @@
         "documentation": {}
     },
     {
-        "label": "router",
-        "kind": 5,
-        "importPath": "API.routers.autores copy",
-        "description": "API.routers.autores copy",
-        "peekOfCode": "router = APIRouter(prefix=\"/autores\", tags=[\"autores\"])\n# Modelo de datos para un autor\nclass Autor(BaseModel):\n    id: int\n    dni: str\n    nombre: str\n    apellidos: str\n# Lista simulada de autores\nAutorList = [\n    Autor(id=1, dni=\"12345678A\", nombre=\"Miguel\", apellidos=\"de Cervantes\"),",
-        "detail": "API.routers.autores copy",
-        "documentation": {}
-    },
-    {
         "label": "AutorList",
         "kind": 5,
         "importPath": "API.routers.autores copy",
@@ -862,7 +828,7 @@
         "kind": 2,
         "importPath": "API.routers.autores",
         "description": "API.routers.autores",
-        "peekOfCode": "def find_autor_by_id(id: str):\n    try:\n        autor = autor_schema(db_client.test.autores.find_one({\"_id\":ObjectId(id)}))\n        return autor(**autor)\n    except:\n        return {\"error\":\"Autor no encontrado\"}    \ndef find_autor_by_dni(dni: str):\n    try:\n        autor = autor_schema(db_client.test.autores.find_one({\"dni\":dni}))\n        return autor(**autor)",
+        "peekOfCode": "def find_autor_by_id(id: str) -> Autor | None:\n    doc = db_client.test.autores.find_one({\"_id\": ObjectId(id)})\n    if doc:\n        return Autor(**autor_schema(doc))\n    return None\ndef find_autor_by_dni(dni: str) -> Autor | None:\n    doc = db_client.test.autores.find_one({\"dni\": dni})\n    if doc:\n        return Autor(**autor_schema(doc))\n    return None",
         "detail": "API.routers.autores",
         "documentation": {}
     },
@@ -871,7 +837,7 @@
         "kind": 2,
         "importPath": "API.routers.autores",
         "description": "API.routers.autores",
-        "peekOfCode": "def find_autor_by_dni(dni: str):\n    try:\n        autor = autor_schema(db_client.test.autores.find_one({\"dni\":dni}))\n        return autor(**autor)\n    except:\n        return {\"error\":\"Autor no encontrado\"}\n#endregion",
+        "peekOfCode": "def find_autor_by_dni(dni: str) -> Autor | None:\n    doc = db_client.test.autores.find_one({\"dni\": dni})\n    if doc:\n        return Autor(**autor_schema(doc))\n    return None\n#endregion",
         "detail": "API.routers.autores",
         "documentation": {}
     },
@@ -880,16 +846,7 @@
         "kind": 5,
         "importPath": "API.routers.autores",
         "description": "API.routers.autores",
-        "peekOfCode": "router = APIRouter(prefix=\"/autores\", tags=[\"autores\"])\n# Lista simulada de autores\nAutorList = []\n# Endpoint para obtener todos los autores\n@router.get(\"/\", response_model=list[Autor])\nasync def autores():\n    return autores_schema(db_client.test.autores.find())\n# Endpoint para obtener un autor por su ID (Query)\n@router.get(\"\", response_model=Autor)\nasync def autor(id : str):",
-        "detail": "API.routers.autores",
-        "documentation": {}
-    },
-    {
-        "label": "AutorList",
-        "kind": 5,
-        "importPath": "API.routers.autores",
-        "description": "API.routers.autores",
-        "peekOfCode": "AutorList = []\n# Endpoint para obtener todos los autores\n@router.get(\"/\", response_model=list[Autor])\nasync def autores():\n    return autores_schema(db_client.test.autores.find())\n# Endpoint para obtener un autor por su ID (Query)\n@router.get(\"\", response_model=Autor)\nasync def autor(id : str):\n    autor = find_autor_by_id(id)\n    if autor:",
+        "peekOfCode": "router = APIRouter(prefix=\"/autores\", tags=[\"autores\"])\n# Endpoint para obtener todos los autores\n@router.get(\"/\", response_model=list[Autor])\nasync def get_autores():\n    return autores_schema(db_client.test.autores.find())\n# Endpoint para obtener un autor por su ID\n@router.get(\"/{id}\", response_model=Autor)\nasync def get_autor(id: str):\n    autor = find_autor_by_id(id)\n    if autor:",
         "detail": "API.routers.autores",
         "documentation": {}
     },
@@ -1002,15 +959,6 @@
         "documentation": {}
     },
     {
-        "label": "router",
-        "kind": 5,
-        "importPath": "API.routers.libros copy",
-        "description": "API.routers.libros copy",
-        "peekOfCode": "router = APIRouter(prefix=\"/libros\", tags=[\"libros\"])\n# Modelo de datos para un libro\nclass Libro(BaseModel):\n    id: int\n    titulo: str\n    idAutor: int\n    isbn: str\n    numPaginas: int\n# Lista simulada de libros\nLibroList = [",
-        "detail": "API.routers.libros copy",
-        "documentation": {}
-    },
-    {
         "label": "LibroList",
         "kind": 5,
         "importPath": "API.routers.libros copy",
@@ -1042,16 +990,7 @@
         "kind": 5,
         "importPath": "API.routers.libros",
         "description": "API.routers.libros",
-        "peekOfCode": "router = APIRouter(prefix=\"/libros\", tags=[\"libros\"])\n# Lista simulada de libros\nLibroList = []\n#region Endpoints\n# Endpoint para obtener todos los libros\n@router.get(\"/\", response_model=list[Libro])\nasync def get_libros():\n    return libros_schema(db_client.test.libros.find())\n# Endpoint para obtener un libro por su ID (Query)\n@router.get(\"\", response_model=Libro)",
-        "detail": "API.routers.libros",
-        "documentation": {}
-    },
-    {
-        "label": "LibroList",
-        "kind": 5,
-        "importPath": "API.routers.libros",
-        "description": "API.routers.libros",
-        "peekOfCode": "LibroList = []\n#region Endpoints\n# Endpoint para obtener todos los libros\n@router.get(\"/\", response_model=list[Libro])\nasync def get_libros():\n    return libros_schema(db_client.test.libros.find())\n# Endpoint para obtener un libro por su ID (Query)\n@router.get(\"\", response_model=Libro)\nasync def get_libro_query(id: str):\n    libro = find_libro_by_id(id)",
+        "peekOfCode": "router = APIRouter(prefix=\"/libros\", tags=[\"libros\"])\n#region Endpoints\n# Endpoint para obtener todos los libros\n@router.get(\"/\", response_model=list[Libro])\nasync def get_libros():\n    return libros_schema(db_client.test.libros.find())\n# Endpoint para obtener un libro por su ID (Query)\n@router.get(\"\", response_model=Libro)\nasync def get_libro_query(id: str):\n    libro = find_libro_by_id(id)",
         "detail": "API.routers.libros",
         "documentation": {}
     },
@@ -1069,7 +1008,7 @@
         "kind": 5,
         "importPath": "API.main",
         "description": "API.main",
-        "peekOfCode": "app = FastAPI()\napp.include_router(libros.router)\napp.include_router(autores.router)\napp.include_router(auth_users.router)\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\n@app.get(\"/\")\ndef read_root():\n    return {\"message\": \"Welcome to the Library API\"}",
+        "peekOfCode": "app = FastAPI()\napp.include_router(libros.router)\napp.include_router(autores.router)\napp.include_router(auth_users.router)\napp.mount(\"/static\", StaticFiles(directory=\"API/static\"), name=\"static\")\n@app.get(\"/\")\ndef read_root():\n    return {\"message\": \"Welcome to the Library API\"}",
         "detail": "API.main",
         "documentation": {}
     },
