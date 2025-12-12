@@ -23,8 +23,8 @@ users_db = {
     # password: 12345 
     "johndoe2": {
         "username": "johndoe2",
-        "email": "johndoe2@gmail.com",
         "full_name": "John Doe 2",
+        "email": "johndoe2@gmail.com",
         "disabled": False,
         "password": "$argon2id$v=19$m=65536,t=3,p=4$uYNv8kxz7retOJ5oQo02wQ$ZepYH255L0y8ikmIjKfqUEPBL6haZHoSYU9T1pONO+c"
     }
