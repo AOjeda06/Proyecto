@@ -769,7 +769,7 @@
         "kind": 5,
         "importPath": "API.db.client",
         "description": "API.db.client",
-        "peekOfCode": "db_client = MongoClient()",
+        "peekOfCode": "db_client = MongoClient(\"mongodb+srv://andresojeda_db_user:1234@cluster0.460pjlj.mongodb.net/?appName=Cluster0\")",
         "detail": "API.db.client",
         "documentation": {}
     },
